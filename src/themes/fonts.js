@@ -6,7 +6,7 @@ import SquareLightWOFF from "../assets/fonts/EuclidSquare-Light.woff";
 import SquareMediumWOFF from "../assets/fonts/EuclidSquare-Medium.woff";
 
 const square = {
-  fontFamily: "Square",
+  fontFamily: "Roboto",
   fontStyle: "normal",
   fontDisplay: "swap",
   fontWeight: 400,

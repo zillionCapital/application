@@ -166,7 +166,7 @@ export const Token = ({
   const theme = useTheme();
   const isLoading = useAppSelector(s => s.account.loading || s.app.loadingMarketPrice || s.app.loading);
   const balanceValue = parseFloat(totalBalance) * price;
-  // cleanedDecimals provides up to 7 sigFigs on an 18 decimal token (gOHM) & 5 sigFigs on 9 decimal Token
+  // cleanedDecimals provides up to 7 sigFigs on an 18 decimal token (gNORO) & 5 sigFigs on 9 decimal Token
   const sigFigs = tDecimals === 18 ? 7 : 5;
 
   return (
@@ -288,7 +288,7 @@ export const useWallet = (): Record<string, IToken> => {
       decimals: 9,
     },
     ohm: {
-      symbol: "OHM",
+      symbol: "NORO",
       address: addresses[networkId].OHM_V2,
       balance: connectedChainBalances.ohm,
       price: ohmPrice || 0,
@@ -296,12 +296,12 @@ export const useWallet = (): Record<string, IToken> => {
       decimals: 9,
     },
     sohm: {
-      symbol: "sOHM",
+      symbol: "sNORO",
       address: addresses[networkId].SOHM_V2,
       balance: connectedChainBalances.sohm,
       price: ohmPrice || 0,
       vaultBalances: {
-        "Fuse Olympus Pool Party": connectedChainBalances.fsohm,
+        "Fuse Cunoro Pool Party": connectedChainBalances.fsohm,
       },
       icon: SOhmImg,
       decimals: 9,
@@ -324,7 +324,7 @@ export const useWallet = (): Record<string, IToken> => {
       decimals: 9,
     },
     gohm: {
-      symbol: "gOHM",
+      symbol: "gNORO",
       address: addresses[networkId].GOHM_ADDRESS,
       balance: connectedChainBalances.gohm,
       price: (ohmPrice || 0) * Number(currentIndex),

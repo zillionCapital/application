@@ -79,8 +79,8 @@ export function DepositSohm({ message }: GenericEducationGraphicProps) {
         </Typography>
         <Typography variant="body2" align="left" className="education-message" style={{ lineHeight: "16px" }}>
           <Trans>
-            Olympus Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first
-            step is depositing your sOHM and specifying a recipient.
+            Olympus Give is a means of directing the yield that is accrued on your sNORO to another wallet. The first
+            step is depositing your sNORO and specifying a recipient.
           </Trans>
         </Typography>
       </Box>
@@ -117,8 +117,8 @@ export function DepositSohm({ message }: GenericEducationGraphicProps) {
         </Typography>
         <Typography variant="body2" align="left" className="education-message" style={{ lineHeight: "16px" }}>
           <Trans>
-            Olympus Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first
-            step is depositing your sOHM and specifying a recipient.
+            Olympus Give is a means of directing the yield that is accrued on your sNORO to another wallet. The first
+            step is depositing your sNORO and specifying a recipient.
           </Trans>
         </Typography>
       </Box>
@@ -139,7 +139,7 @@ export function VaultGraphic({ quantity, verb = "deposited", isLoading }: Educat
       </Box>
       <Box display="flex" flex="1" alignItems="center" justifyContent="center" className="text">
         <Typography variant="h6" align="center" className="cta-text">
-          {isLoading ? <Skeleton width={120} /> : `${quantity} sOHM ${verb}`}
+          {isLoading ? <Skeleton width={120} /> : `${quantity} sNORO ${verb}`}
         </Typography>
       </Box>
     </Box>
@@ -186,8 +186,8 @@ export function LockInVault({ message }: GenericEducationGraphicProps) {
         </Typography>
         <Typography variant="body2" align="left" className="education-message" style={{ lineHeight: "16px" }}>
           <Trans>
-            Then, your deposited sOHM is kept in a vault smart contract that will send your rebases to the recipient.
-            You can withdraw or edit your principal sOHM amount at any time.
+            Then, your deposited sNORO is kept in a vault smart contract that will send your rebases to the recipient.
+            You can withdraw or edit your principal sNORO amount at any time.
           </Trans>
         </Typography>
       </Box>
@@ -230,8 +230,8 @@ export function LockInVault({ message }: GenericEducationGraphicProps) {
         </Typography>
         <Typography variant="body2" align="left" className="education-message" style={{ lineHeight: "16px" }}>
           <Trans>
-            Then, your deposited sOHM is kept in a vault smart contract that will send your rebases to the recipient.
-            You can withdraw or edit your principal sOHM amount at any time.
+            Then, your deposited sNORO is kept in a vault smart contract that will send your rebases to the recipient.
+            You can withdraw or edit your principal sNORO amount at any time.
           </Trans>
         </Typography>
       </Box>
@@ -260,7 +260,7 @@ export function YieldGraphic({ quantity }: EducationGraphicProps) {
       </Box>
       <Box display="flex" flex="1" alignItems="center" justifyContent="center" className="text">
         <Typography variant="h6" align="center" className="cta-text">
-          {`${t`Receives yield from`} ${quantity} sOHM`}
+          {`${t`Receives yield from`} ${quantity} sNORO`}
         </Typography>
       </Box>
     </Box>
@@ -288,7 +288,7 @@ export function RedeemGraphic({ quantity, isLoading }: EducationGraphicProps) {
       </Box>
       <Box display="flex" flex="1" alignItems="center" justifyContent="center" className="text">
         <Typography variant="h6" align="center" className="cta-text">
-          {isLoading ? <Skeleton width={120} /> : `${t`Redeem`} ${quantity} ${`sOHM in yield`}`}
+          {isLoading ? <Skeleton width={120} /> : `${t`Redeem`} ${quantity} ${`sNORO in yield`}`}
         </Typography>
       </Box>
     </Box>
@@ -330,7 +330,7 @@ export function ReceivesYield({ message }: GenericEducationGraphicProps) {
         <Typography variant="body2" align="left" className="education-message" style={{ lineHeight: "16px" }}>
           <Trans>
             The recipient you specified, or the project you selected, will then receive the rebases associated with your
-            sOHM deposit until you withdraw your sOHM principal from the vault.
+            sNORO deposit until you withdraw your sNORO principal from the vault.
           </Trans>
         </Typography>
       </Box>
@@ -368,7 +368,7 @@ export function ReceivesYield({ message }: GenericEducationGraphicProps) {
         <Typography variant="body2" align="left" className="education-message" style={{ lineHeight: "16px" }}>
           <Trans>
             The recipient you specified, or the project you selected, will then receive the rebases associated with your
-            sOHM deposit until you withdraw your sOHM principal from the vault.
+            sNORO deposit until you withdraw your sNORO principal from the vault.
           </Trans>
         </Typography>
       </Box>
@@ -389,7 +389,7 @@ export function CurrPositionGraphic({ quantity }: EducationGraphicProps) {
       </Box>
       <Box display="flex" flex="1" alignItems="center" justifyContent="center" className="text">
         <Typography variant="h6" align="center" className="cta-text">
-          {quantity} sOHM
+          {quantity} sNORO
         </Typography>
       </Box>
     </Box>
@@ -409,7 +409,7 @@ export function NewPositionGraphic({ quantity }: EducationGraphicProps) {
       </Box>
       <Box display="flex" flex="1" alignItems="center" justifyContent="center" className="text">
         <Typography variant="h6" align="center" className="cta-text">
-          {quantity} sOHM
+          {quantity} sNORO
         </Typography>
       </Box>
     </Box>

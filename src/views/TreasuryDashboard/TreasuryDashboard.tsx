@@ -42,7 +42,7 @@ const TreasuryDashboard = memo(() => {
           <Alert
             variant="filled"
             icon={false}
-            severity={`info`}
+            severity={`warning`}
             // NOTE (appleseed): mui includes overflow-wrap: "break-word", but word-break: "break-word" is needed for webKit browsers
             style={{ wordBreak: "break-word" }}
           >
@@ -50,8 +50,8 @@ const TreasuryDashboard = memo(() => {
               <SvgIcon component={InfoIcon} />
               <Box width={10} />
               <Typography>
-                Olympus is currently migrating to improved contracts. Please note that during this time, frontend
-                metrics may be inaccurate.
+                Cunoro is currently in Testing Stage to improved contracts. Please note that during this time, frontend
+                metrics are from Testnet.
               </Typography>
             </Box>
           </Alert>

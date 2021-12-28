@@ -38,7 +38,7 @@ export const dai = new StableBond({
   name: "dai",
   displayName: "DAI",
   bondToken: "DAI",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: DaiImg,
   bondContractABI: DaiBondContract,
@@ -83,7 +83,7 @@ export const fraxOld = new StableBond({
   name: "frax-old",
   displayName: "FRAX OLD",
   bondToken: "FRAX",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: FraxImg,
   bondContractABI: FraxBondContract,
@@ -128,7 +128,7 @@ export const frax = new StableBond({
   name: "frax",
   displayName: "FRAX",
   bondToken: "FRAX",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: true,
   bondIconSvg: FraxImg,
   bondContractABI: FraxBondContract,
@@ -173,7 +173,7 @@ export const lusd = new StableBond({
   name: "lusd",
   displayName: "LUSD",
   bondToken: "LUSD",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: LusdImg,
   bondContractABI: LusdBondContract,
@@ -220,7 +220,7 @@ export const eth = new CustomBond({
   lpUrl: "",
   bondType: BondType.StableAsset,
   bondToken: "wETH",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: wETHImg,
   bondContractABI: EthBondContract,
@@ -277,7 +277,7 @@ export const cvx = new CustomBond({
   lpUrl: "",
   bondType: BondType.StableAsset,
   bondToken: "CVX",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: CvxImg,
   bondContractABI: CvxBondContract,
@@ -334,7 +334,7 @@ export const cvx_expired = new CustomBond({
   lpUrl: "",
   bondType: BondType.StableAsset,
   bondToken: "CVX",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: CvxImg,
   bondContractABI: CvxBondContract,
@@ -386,9 +386,9 @@ export const cvx_expired = new CustomBond({
 
 export const ohm_dai = new LPBond({
   name: "ohm_dai_lp",
-  displayName: "OHM-DAI LP",
+  displayName: "NORO-DAI LP",
   bondToken: "DAI",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: true,
   bondIconSvg: OhmDaiImg,
   bondContractABI: BondOhmDaiContract,
@@ -435,9 +435,9 @@ export const ohm_dai = new LPBond({
 
 export const ohm_daiOld = new LPBond({
   name: "ohm_dai_lp_old",
-  displayName: "OHM-DAI LP OLD",
+  displayName: "NORO-DAI LP OLD",
   bondToken: "DAI",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: OhmDaiImg,
   bondContractABI: BondOhmDaiContract,
@@ -483,9 +483,9 @@ export const ohm_daiOld = new LPBond({
 
 export const ohm_frax = new LPBond({
   name: "ohm_frax_lp",
-  displayName: "OHM-FRAX LP",
+  displayName: "NORO-FRAX LP",
   bondToken: "FRAX",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: true,
   bondIconSvg: OhmFraxImg,
   bondContractABI: FraxOhmBondContract,
@@ -531,9 +531,9 @@ export const ohm_frax = new LPBond({
 
 export const ohm_fraxOld = new LPBond({
   name: "ohm_frax_lp_old",
-  displayName: "OHM-FRAX LP OLD",
+  displayName: "NORO-FRAX LP OLD",
   bondToken: "FRAX",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: OhmFraxImg,
   bondContractABI: FraxOhmBondContract,
@@ -579,9 +579,9 @@ export const ohm_fraxOld = new LPBond({
 
 export const ohm_lusd = new LPBond({
   name: "ohm_lusd_lp",
-  displayName: "OHM-LUSD LP",
+  displayName: "NORO-LUSD LP",
   bondToken: "LUSD",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: OhmLusdImg,
   bondContractABI: BondOhmLusdContract,
@@ -628,9 +628,9 @@ export const ohm_lusd = new LPBond({
 
 export const ohm_weth = new CustomBond({
   name: "ohm_weth_lp",
-  displayName: "OHM-WETH SLP",
+  displayName: "NORO-WETH SLP",
   bondToken: "WETH",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: true,
   bondIconSvg: OhmEthImg,
   bondContractABI: BondOhmEthContract,
@@ -690,7 +690,7 @@ export const ohm_weth = new CustomBond({
         (Number(valuation.toString()) / Math.pow(10, 9)) * (Number(markdown.toString()) / Math.pow(10, 18));
       return tokenUSD * Number(ethPrice.toString());
     } else {
-      // NOTE (appleseed): using OHM-DAI on rinkeby
+      // NOTE (appleseed): using NORO-DAI on rinkeby
       const token = this.getContractForReserve(networkID, provider);
       const tokenAddress = this.getAddressForReserve(networkID);
       const bondCalculator = getBondCalculator(networkID, provider, false);
@@ -706,9 +706,9 @@ export const ohm_weth = new CustomBond({
 
 export const ohm_wethOld = new CustomBond({
   name: "ohm_weth_lp_old",
-  displayName: "OHM-WETH SLP OLD",
+  displayName: "NORO-WETH SLP OLD",
   bondToken: "WETH",
-  payoutToken: "OHM",
+  payoutToken: "NORO",
   v2Bond: false,
   bondIconSvg: OhmEthImg,
   bondContractABI: BondOhmEthContract,
@@ -767,7 +767,7 @@ export const ohm_wethOld = new CustomBond({
         (Number(valuation.toString()) / Math.pow(10, 9)) * (Number(markdown.toString()) / Math.pow(10, 18));
       return tokenUSD * Number(ethPrice.toString());
     } else {
-      // NOTE (appleseed): using OHM-DAI on rinkeby
+      // NOTE (appleseed): using NORO-DAI on rinkeby
       const token = this.getContractForReserve(networkID, provider);
       const tokenAddress = this.getAddressForReserve(networkID);
       const bondCalculator = getBondCalculator(networkID, provider, false);

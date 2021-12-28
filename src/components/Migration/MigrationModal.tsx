@@ -134,25 +134,25 @@ function MigrationModal({ open, handleClose }: { open: boolean; handleClose: any
 
   rows = [
     {
-      initialAsset: "OHM",
+      initialAsset: "NORO",
       initialBalance: currentOhmBalance,
-      targetAsset: "gOHM",
+      targetAsset: "gNORO",
       targetBalance: currentOhmBalance / currentIndex,
       fullApproval: ohmFullApproval,
       usdBalance: ohmInUSD,
     },
     {
-      initialAsset: "sOHM",
+      initialAsset: "sNORO",
       initialBalance: currentSOhmBalance,
-      targetAsset: "gOHM",
+      targetAsset: "gNORO",
       targetBalance: currentSOhmBalance / currentIndex,
       fullApproval: sOhmFullApproval,
       usdBalance: sOhmInUSD,
     },
     {
-      initialAsset: "wsOHM",
+      initialAsset: "wsNORO",
       initialBalance: currentWSOhmBalance,
-      targetAsset: "gOHM",
+      targetAsset: "gNORO",
       targetBalance: currentWSOhmBalance,
       fullApproval: wsOhmFullApproval,
       usdBalance: wsOhmInUSD,
@@ -283,7 +283,7 @@ function MigrationModal({ open, handleClose }: { open: boolean; handleClose: any
                             <Trans>Post-migration</Trans>
                           </Typography>
                           <InfoTooltip
-                            message={t`This is the equivalent amount of gOHM you will have in your wallet once migration is complete.`}
+                            message={t`This is the equivalent amount of gNORO you will have in your wallet once migration is complete.`}
                             children={undefined}
                           ></InfoTooltip>
                         </Box>

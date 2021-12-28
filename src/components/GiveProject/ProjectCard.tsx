@@ -123,7 +123,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
 
     // We use dispatch to asynchronously fetch the results, and then update state variables so that the component refreshes
     // We DO NOT use dispatch here, because it will overwrite the state variables in the redux store, which then creates havoc
-    // e.g. the redeem yield page will show someone else's deposited sOHM and redeemable yield
+    // e.g. the redeem yield page will show someone else's deposited sNORO and redeemable yield
     getRedemptionBalancesAsync({
       networkID: networkId,
       provider: provider,
@@ -276,7 +276,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
             title={
               !address
                 ? t`Connect your wallet to view the fundraising progress`
-                : `${totalDebt} of ${depositGoal} sOHM raised`
+                : `${totalDebt} of ${depositGoal} sNORO raised`
             }
             arrow
           >
@@ -314,7 +314,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
               </Typography>
             </div>
             <div className="subtext">
-              <Trans>sOHM Donated</Trans>
+              <Trans>sNORO Donated</Trans>
             </div>
           </Grid>
           <Grid item xs={4} />
@@ -331,7 +331,7 @@ export default function ProjectCard({ project, mode }: ProjectDetailsProps) {
               </Typography>
             </div>
             <div className="subtext">
-              <Trans>sOHM Goal</Trans>
+              <Trans>sNORO Goal</Trans>
             </div>
           </Grid>
         </Grid>
