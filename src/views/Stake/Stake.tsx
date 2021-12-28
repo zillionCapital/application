@@ -162,20 +162,20 @@ function Stake() {
     // 1st catch if quantity > balance
     let gweiValue = ethers.utils.parseUnits(quantity.toString(), "gwei");
     if (action === "stake" && gweiValue.gt(ethers.utils.parseUnits(ohmBalance, "gwei"))) {
-      return dispatch(error(t`You cannot stake more than your OHM balance.`));
+      return dispatch(error(t`You cannot stake more than your NORO balance.`));
     }
 
     if (confirmation === false && action === "unstake" && gweiValue.gt(ethers.utils.parseUnits(sohmBalance, "gwei"))) {
       return dispatch(
         error(
-          t`You do not have enough sOHM to complete this transaction.  To unstake from gOHM, please check the box.`,
+          t`You do not have enough sNORO to complete this transaction.  To unstake from gNORO, please check the box.`,
         ),
       );
     }
 
     /**
-     * converts sOHM quantity to gOHM quantity when box is checked for gOHM staking
-     * @returns sOHM as gOHM quantity
+     * converts sNORO quantity to gNORO quantity when box is checked for gNORO staking
+     * @returns sNORO as gNORO quantity
      */
     // const formQuant = checked && currentIndex && view === 1 ? quantity / Number(currentIndex) : quantity;
     const formQuant = async () => {
@@ -290,7 +290,7 @@ function Stake() {
                     {modalButton}
                   </div>
                   <Typography variant="h6">
-                    <Trans>Connect your wallet to stake OHM</Trans>
+                    <Trans>Connect your wallet to stake NORO</Trans>
                   </Typography>
                 </div>
               ) : (
@@ -327,16 +327,16 @@ function Stake() {
                               <Typography variant="body1" className="stake-note" color="textSecondary">
                                 {view === 0 ? (
                                   <>
-                                    <Trans>First time staking</Trans> <b>OHM</b>?
+                                    <Trans>First time staking</Trans> <b>NORO</b>?
                                     <br />
-                                    <Trans>Please approve Olympus Dao to use your</Trans> <b>OHM</b>{" "}
+                                    <Trans>Please approve Cunoro to use your</Trans> <b>NORO</b>{" "}
                                     <Trans>for staking</Trans>.
                                   </>
                                 ) : (
                                   <>
-                                    <Trans>First time unstaking</Trans> <b>sOHM</b>?
+                                    <Trans>First time unstaking</Trans> <b>sNORO</b>?
                                     <br />
-                                    <Trans>Please approve Olympus Dao to use your</Trans> <b>sOHM</b>{" "}
+                                    <Trans>Please approve Cunoro to use your</Trans> <b>sNORO</b>{" "}
                                     <Trans>for unstaking</Trans>.
                                   </>
                                 )}
@@ -382,7 +382,7 @@ function Stake() {
                                   onChangeStake("stake");
                                 }}
                               >
-                                {txnButtonText(pendingTransactions, "staking", t`Stake OHM`)}
+                                {txnButtonText(pendingTransactions, "staking", t`Stake NORO`)}
                               </Button>
                             ) : (
                               <Button
@@ -445,7 +445,7 @@ function Stake() {
                     <StakeRow
                       title={t`Unstaked Balance`}
                       id="user-balance"
-                      balance={`${trim(Number(ohmBalance), 4)} OHM`}
+                      balance={`${trim(Number(ohmBalance), 4)} NORO`}
                       {...{ isAppLoading }}
                     />
                     <Accordion className="stake-accordion" square defaultExpanded>
@@ -453,27 +453,27 @@ function Stake() {
                         <StakeRow
                           title={t`Staked Balance`}
                           id="user-staked-balance"
-                          balance={`${trimmedBalance} sOHM`}
+                          balance={`${trimmedBalance} sNORO`}
                           {...{ isAppLoading }}
                         />
                       </AccordionSummary>
                       <AccordionDetails>
                         <StakeRow
                           title={t`Single Staking`}
-                          balance={`${trim(Number(sohmBalance), 4)} sOHM`}
+                          balance={`${trim(Number(sohmBalance), 4)} sNORO`}
                           indented
                           {...{ isAppLoading }}
                         />
                         <StakeRow
                           title={`${t`Wrapped Balance`}`}
-                          balance={`${trim(Number(gOhmBalance), 4)} gOHM`}
+                          balance={`${trim(Number(gOhmBalance), 4)} gNORO`}
                           indented
                           {...{ isAppLoading }}
                         />
                         {Number(fgohmBalance) > 0.00009 && (
                           <StakeRow
                             title={`${t`Wrapped Balance in Fuse`}`}
-                            balance={`${trim(Number(fgohmBalance), 4)} gOHM`}
+                            balance={`${trim(Number(fgohmBalance), 4)} gNORO`}
                             indented
                             {...{ isAppLoading }}
                           />
@@ -481,7 +481,7 @@ function Stake() {
                         {Number(sohmV1Balance) > 0.00009 && (
                           <StakeRow
                             title={`${t`Single Staking`} (v1)`}
-                            balance={`${trim(Number(sohmV1Balance), 4)} sOHM (v1)`}
+                            balance={`${trim(Number(sohmV1Balance), 4)} sNORO (v1)`}
                             indented
                             {...{ isAppLoading }}
                           />
@@ -489,7 +489,7 @@ function Stake() {
                         {Number(wsohmBalance) > 0.00009 && (
                           <StakeRow
                             title={`${t`Wrapped Balance`} (v1)`}
-                            balance={`${trim(Number(wsohmBalance), 4)} wsOHM (v1)`}
+                            balance={`${trim(Number(wsohmBalance), 4)} wsNORO (v1)`}
                             {...{ isAppLoading }}
                             indented
                           />
@@ -497,7 +497,7 @@ function Stake() {
                         {Number(fiatDaowsohmBalance) > 0.00009 && (
                           <StakeRow
                             title={t`Wrapped Balance in FiatDAO`}
-                            balance={`${trim(Number(fiatDaowsohmBalance), 4)} wsOHM (v1)`}
+                            balance={`${trim(Number(fiatDaowsohmBalance), 4)} wsNORO (v1)`}
                             {...{ isAppLoading }}
                             indented
                           />
@@ -505,7 +505,7 @@ function Stake() {
                         {Number(fsohmBalance) > 0.00009 && (
                           <StakeRow
                             title={t`Staked Balance in Fuse`}
-                            balance={`${trim(Number(fsohmBalance), 4)} sOHM (v1)`}
+                            balance={`${trim(Number(fsohmBalance), 4)} sNORO (v1)`}
                             indented
                             {...{ isAppLoading }}
                           />
@@ -513,7 +513,7 @@ function Stake() {
                       </AccordionDetails>
                     </Accordion>
                     <Divider color="secondary" />
-                    <StakeRow title={t`Next Reward Amount`} balance={`${nextRewardValue} sOHM`} {...{ isAppLoading }} />
+                    <StakeRow title={t`Next Reward Amount`} balance={`${nextRewardValue} sNORO`} {...{ isAppLoading }} />
                     <StakeRow
                       title={t`Next Reward Yield`}
                       balance={`${stakingRebasePercentage}%`}

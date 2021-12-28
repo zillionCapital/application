@@ -141,11 +141,11 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
     // 1st catch if quantity > balance
     let gweiValue = ethers.utils.parseUnits(quantity, "gwei");
     if (action === "stake" && gweiValue.gt(ethers.utils.parseUnits(ohmBalance, "gwei"))) {
-      return dispatch(error("You cannot stake more than your OHM balance."));
+      return dispatch(error("You cannot stake more than your NORO balance."));
     }
 
     if (action === "unstake" && gweiValue.gt(ethers.utils.parseUnits(sohmBalance, "gwei"))) {
-      return dispatch(error("You cannot unstake more than your sOHM balance."));
+      return dispatch(error("You cannot unstake more than your sNORO balance."));
     }
 
     await dispatch(
@@ -253,7 +253,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                         <Trans>Current Index</Trans> (v1)
                       </Typography>
                       <Typography variant="h4">
-                        {currentIndex ? <>{trim(currentIndex, 1)} OHM</> : <Skeleton width="150px" />}
+                        {currentIndex ? <>{trim(currentIndex, 1)} NORO</> : <Skeleton width="150px" />}
                       </Typography>
                     </div>
                   </Grid>
@@ -268,7 +268,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                     {modalButton}
                   </div>
                   <Typography variant="h6">
-                    <Trans>Connect your wallet to stake OHM</Trans>
+                    <Trans>Connect your wallet to stake NORO</Trans>
                   </Typography>
                 </div>
               ) : (
@@ -293,10 +293,10 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                         {view === 0 ? (
                           <>
                             {hasActiveV1Bonds
-                              ? t`Once your current bonds have been claimed, you can migrate your assets to stake more OHM`
+                              ? t`Once your current bonds have been claimed, you can migrate your assets to stake more NORO`
                               : !oldAssetsDetected
                               ? t`All your assets are migrated`
-                              : t`You must complete the migration of your assets to stake additional OHM`}
+                              : t`You must complete the migration of your assets to stake additional NORO`}
                           </>
                         ) : (
                           <br />
@@ -310,9 +310,9 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                           <Box className="help-text">
                             <Typography variant="body1" className="stake-note" color="textSecondary">
                               <>
-                                <Trans>First time unstaking</Trans> <b>sOHM</b>?
+                                <Trans>First time unstaking</Trans> <b>sNORO</b>?
                                 <br />
-                                <Trans>Please approve Olympus Dao to use your</Trans> <b>sOHM </b>
+                                <Trans>Please approve Olympus Dao to use your</Trans> <b>sNORO </b>
                                 <Trans> for unstaking</Trans>.
                               </>
                             </Typography>
@@ -397,7 +397,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                               onChangeStake("unstake");
                             }}
                           >
-                            {txnButtonText(pendingTransactions, "unstaking", t`Unstake OHM`)}
+                            {txnButtonText(pendingTransactions, "unstaking", t`Unstake NORO`)}
                           </Button>
                         ) : (
                           <Button
@@ -419,7 +419,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                     <StakeRow
                       title={`${t`Unstaked Balance`} (v1)`}
                       id="user-balance"
-                      balance={`${trim(Number(ohmBalance), 4)} OHM`}
+                      balance={`${trim(Number(ohmBalance), 4)} NORO`}
                       {...{ isAppLoading }}
                     />
                     <Accordion className="stake-accordion" square>
@@ -427,21 +427,21 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                         <StakeRow
                           title={t`Staked Balance`}
                           id="user-staked-balance"
-                          balance={`${trimmedBalance} sOHM`}
+                          balance={`${trimmedBalance} sNORO`}
                           {...{ isAppLoading }}
                         />
                       </AccordionSummary>
                       <AccordionDetails>
                         <StakeRow
                           title={`${t`Single Staking`} (v1)`}
-                          balance={`${trim(Number(sohmBalance), 4)} sOHM`}
+                          balance={`${trim(Number(sohmBalance), 4)} sNORO`}
                           indented
                           {...{ isAppLoading }}
                         />
                         {Number(fsohmBalance) > 0.00009 && (
                           <StakeRow
                             title={`${t`Staked Balance in Fuse`} (v2)`}
-                            balance={`${trim(Number(fsohmBalance), 4)} fsOHM`}
+                            balance={`${trim(Number(fsohmBalance), 4)} fsNORO`}
                             indented
                             {...{ isAppLoading }}
                           />
@@ -449,7 +449,7 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                         {Number(wsohmBalance) > 0.0 && (
                           <StakeRow
                             title={`${t`Wrapped Balance`} (v1)`}
-                            balance={`${trim(Number(wsohmBalance), 4)} wsOHM`}
+                            balance={`${trim(Number(wsohmBalance), 4)} wsNORO`}
                             {...{ isAppLoading }}
                             indented
                           />
@@ -457,27 +457,27 @@ function V1Stake({ oldAssetsDetected, setMigrationModalOpen, hasActiveV1Bonds })
                         {Number(fiatDaowsohmBalance) > 0.00009 && (
                           <StakeRow
                             title={`${t`Wrapped Balance in FiatDAO`} (v1)`}
-                            balance={`${trim(Number(fiatDaowsohmBalance), 4)} wsOHM`}
+                            balance={`${trim(Number(fiatDaowsohmBalance), 4)} wsNORO`}
                             {...{ isAppLoading }}
                             indented
                           />
                         )}
                         <StakeRow
                           title={`${t`Single Staking`} (v2)`}
-                          balance={`${trim(Number(sohmV2Balance), 4)} sOHM`}
+                          balance={`${trim(Number(sohmV2Balance), 4)} sNORO`}
                           indented
                           {...{ isAppLoading }}
                         />
                         <StakeRow
                           title={`${t`Wrapped Balance`} (v2)`}
-                          balance={`${trim(Number(gOhmBalance), 4)} gOHM`}
+                          balance={`${trim(Number(gOhmBalance), 4)} gNORO`}
                           indented
                           {...{ isAppLoading }}
                         />
                       </AccordionDetails>
                     </Accordion>
                     <Divider color="secondary" />
-                    <StakeRow title={t`Next Reward Amount`} balance={`${nextRewardValue} sOHM`} {...{ isAppLoading }} />
+                    <StakeRow title={t`Next Reward Amount`} balance={`${nextRewardValue} sNORO`} {...{ isAppLoading }} />
                     <StakeRow
                       title={t`Next Reward Yield`}
                       balance={`${stakingRebasePercentage}%`}
