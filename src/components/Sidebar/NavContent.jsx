@@ -5,7 +5,8 @@ import externalUrls from "./externalUrls";
 import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
-import { ReactComponent as CunoroIcon } from "../../assets/icons/cunoro.svg";
+// import { ReactComponent as CunoroIcon } from "../../assets/icons/cunoro.svg";
+import Logo from "../../assets/cunoro.png"
 import { ReactComponent as PoolTogetherIcon } from "../../assets/icons/33-together.svg";
 import { ReactComponent as GiveIcon } from "../../assets/icons/give.svg";
 import { ReactComponent as ZapIcon } from "../../assets/icons/zap.svg";
@@ -85,12 +86,7 @@ function NavContent() {
         <div className="dapp-menu-top">
           <Box className="branding-header">
             <Link href="https://cunoro.finance" target="_blank">
-              <SvgIcon
-                color="primary"
-                component={CunoroIcon}
-                viewBox="0 0 151 100"
-                style={{ minWdth: "151px", minHeight: "98px", width: "151px" }}
-              />
+              <img src={Logo} className="logo" />
             </Link>
 
             {address && (
