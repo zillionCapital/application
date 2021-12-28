@@ -122,33 +122,33 @@ export default function ExternalStakePool() {
           style={{ gap: theme.spacing(4) /* material says 'gap' does not exist 😡 */ }}
         >
           <StakePool
-            poolName="gOHM-AVAX"
+            poolName="gNORO-AVAX"
             icons={[gOhmImage, avaxImage]}
             stakeOn="Trader Joe"
             // apy={"11.08% + 28.51%"}
             href="https://traderjoexyz.com/#/farm/0xB674f93952F02F2538214D4572Aa47F262e990Ff-0x188bED1968b795d5c9022F6a0bb5931Ac4c18F00"
           />
           <StakePool
-            poolName="gOHM-AVAX"
+            poolName="gNORO-AVAX"
             icons={[gOhmImage, avaxImage]}
             stakeOn="Pangolin"
             // apy={"18.00% + 68.00%"}
             href="https://app.pangolin.exchange/#/png/0x321E7092a180BB43555132ec53AaA65a5bF84251/AVAX/2"
           />
-          <StakePool
-            poolName="gOHM-wETH"
+          {/*<StakePool
+            poolName="gNORO-wETH"
             icons={[gOhmImage, wEthImage]}
             stakeOn="Sushi (Arbitrum)"
             // apy={"43.99% + 4.65%"}
             href="https://app.sushi.com/farm?filter=2x"
           />
           <StakePool
-            poolName="gOHM-wETH"
+            poolName="gNORO-wETH"
             icons={[gOhmImage, wEthImage]}
             stakeOn="Sushi (Polygon)"
             // apy={"62.98% + 10.90%"}
             href="https://app.sushi.com/farm?filter=2x"
-          />
+          />*/}
           {/* <StakePool
             poolName="gOHM-FTM"
             icons={[gOhmImage, ftmImage]}

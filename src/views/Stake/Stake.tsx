@@ -277,7 +277,7 @@ function Stake() {
                 <Metric
                   className="stake-index"
                   label={t`Current Index`}
-                  metric={`${formattedCurrentIndex} sOHM`}
+                  metric={`${formattedCurrentIndex} sNORO`}
                   isLoading={currentIndex ? false : true}
                 />
               </MetricCollection>
