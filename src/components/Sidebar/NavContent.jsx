@@ -5,7 +5,7 @@ import externalUrls from "./externalUrls";
 import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
-import { ReactComponent as OlympusIcon } from "../../assets/icons/olympus-nav-header.svg";
+import { ReactComponent as CunoroIcon } from "../../assets/icons/cunoro.svg";
 import { ReactComponent as PoolTogetherIcon } from "../../assets/icons/33-together.svg";
 import { ReactComponent as GiveIcon } from "../../assets/icons/give.svg";
 import { ReactComponent as ZapIcon } from "../../assets/icons/zap.svg";
@@ -84,10 +84,10 @@ function NavContent() {
       <Box className="dapp-sidebar-inner" display="flex" justifyContent="space-between" flexDirection="column">
         <div className="dapp-menu-top">
           <Box className="branding-header">
-            <Link href="https://olympusdao.finance" target="_blank">
+            <Link href="https://cunoro.finance" target="_blank">
               <SvgIcon
                 color="primary"
-                component={OlympusIcon}
+                component={CunoroIcon}
                 viewBox="0 0 151 100"
                 style={{ minWdth: "151px", minHeight: "98px", width: "151px" }}
               />
@@ -154,8 +154,6 @@ function NavContent() {
                         </AccordionSummary>
                         <AccordionDetails>
                           {bonds.map((bond, i) => {
-                            // NOTE (appleseed): temporary for ONHOLD MIGRATION
-                            // if (bond.getBondability(networkId)) {
                             if (bond.getBondability(networkId) || bond.getLOLability(networkId)) {
                               return (
                                 <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
@@ -171,9 +169,9 @@ function NavContent() {
                                           : !bond.isBondable[networkId]
                                           ? "Sold Out"
                                           : `${bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%`}
-                                        {/* {!bond.isBondable[networkId]
+                                        {!bond.isBondable[networkId]
                                           ? "Sold Out"
-                                          : `${bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%`} */}
+                                          : `${bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%`}
                                       </span>
                                     </Typography>
                                   )}
@@ -201,7 +199,7 @@ function NavContent() {
                     </Typography>
                   </Link>
 
-                  <Link
+                  {/*<Link
                     component={NavLink}
                     id="zap-nav"
                     to="/zap"
@@ -213,13 +211,12 @@ function NavContent() {
                     <Box display="flex" alignItems="center">
                       <SvgIcon component={ZapIcon} color="primary" />
                       <Typography variant="h6">OlyZaps</Typography>
-                      {/* <SvgIcon component={NewIcon} viewBox="21 -2 20 20" style={{ width: "80px" }} /> */}
                     </Box>
-                  </Link>
+                  </Link>*/}
 
                   {EnvHelper.isGiveEnabled(location.search) ? (
                     <>
-                      <Link
+                      {/*<Link
                         component={NavLink}
                         id="give-nav"
                         to="/give"
@@ -233,13 +230,13 @@ function NavContent() {
                           <Trans>Give</Trans>
                           <SvgIcon component={NewIcon} viewBox="21 -2 20 20" style={{ width: "80px" }} />
                         </Typography>
-                      </Link>
+                      </Link>*/}
                     </>
                   ) : (
                     <></>
                   )}
 
-                  <Link
+                  {/*<Link
                     component={NavLink}
                     id="wrap-nav"
                     to="/wrap"
@@ -250,13 +247,11 @@ function NavContent() {
                   >
                     <Box display="flex" alignItems="center">
                       <SvgIcon component={WrapIcon} color="primary" viewBox="1 0 20 22" />
-                      {/* <WrapIcon /> */}
                       <Typography variant="h6">Wrap</Typography>
-                      {/* <SvgIcon component={WrapIcon} viewBox="21 -2 20 20" style={{ width: "80px" }} /> */}
                     </Box>
-                  </Link>
+                  </Link>*/}
 
-                  <Link
+                  {/*<Link
                     href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
                     target="_blank"
                     className="external-site-link"
@@ -270,21 +265,21 @@ function NavContent() {
                         className="external-site-link-icon"
                       />
                     </Typography>
-                  </Link>
+                  </Link>*/}
 
-                  <Box className="menu-divider">
+                  {/*<Box className="menu-divider">
                     <Divider />
-                  </Box>
+                  </Box>*/}
 
-                  <Link href="https://pro.olympusdao.finance/" target="_blank" className="external-site-link">
+                  {/*<Link href="https://pro.olympusdao.finance/" target="_blank" className="external-site-link">
                     <Box display="flex" alignItems="center">
                       <SvgIcon component={ProIcon} color="primary" color="primary" viewBox="0 0 50 50" />
                       <Typography variant="h6">Olympus Pro</Typography>
                       <SvgIcon component={ArrowUpIcon} className="external-site-link-icon" />
                     </Box>
-                  </Link>
+                  </Link>*/}
 
-                  {/* <Link
+                  {/*<Link
                     component={NavLink}
                     id="33-together-nav"
                     to="/33-together"
@@ -297,14 +292,14 @@ function NavContent() {
                       <SvgIcon color="primary" component={PoolTogetherIcon} />
                       3,3 Together
                     </Typography>
-                  </Link> */}
+                  </Link>*/}
                   <Box className="menu-divider">
                     <Divider />
                   </Box>
                 </>
               ) : (
                 <>
-                  <Link
+                  {/*<Link
                     component={NavLink}
                     id="wrap-nav"
                     to="/wrap"
@@ -315,9 +310,7 @@ function NavContent() {
                   >
                     <Box display="flex" alignItems="center">
                       <SvgIcon component={WrapIcon} color="primary" viewBox="1 0 20 22" />
-                      {/* <WrapIcon /> */}
                       <Typography variant="h6">Wrap</Typography>
-                      {/* <SvgIcon component={WrapIcon} viewBox="21 -2 20 20" style={{ width: "80px" }} /> */}
                     </Box>
                   </Link>
 
@@ -330,14 +323,14 @@ function NavContent() {
                       <Trans>Bridge</Trans>
                       <SvgIcon style={{ marginLeft: "5px" }} component={ArrowUpIcon} />
                     </Typography>
-                  </Link>
+                  </Link>*/}
                 </>
               )}
             </div>
           </div>
         </div>
         <Box className="dapp-menu-bottom" display="flex" justifyContent="space-between" flexDirection="column">
-          <div className="dapp-menu-external-links">
+          {/*<div className="dapp-menu-external-links">
             {Object.keys(externalUrls).map((link, i) => {
               return (
                 <Link key={i} href={`${externalUrls[link].url}`} target="_blank" className="external-site-link">
@@ -347,7 +340,7 @@ function NavContent() {
                 </Link>
               );
             })}
-          </div>
+          </div>*/}
           <div className="dapp-menu-social">
             <Social />
           </div>
