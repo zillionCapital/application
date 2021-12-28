@@ -119,43 +119,20 @@ export default function ExternalStakePool() {
         </div>
         <Box
           sx={{ display: "flex", flexDirection: "column" }}
-          style={{ gap: theme.spacing(4) /* material says 'gap' does not exist 😡 */ }}
+          style={{ gap: theme.spacing(4)}}
         >
           <StakePool
             poolName="gNORO-AVAX"
             icons={[gNoroImage, avaxImage]}
             stakeOn="Trader Joe"
-            // apy={"11.08% + 28.51%"}
             href="https://traderjoexyz.com/#/farm/0xB674f93952F02F2538214D4572Aa47F262e990Ff-0x188bED1968b795d5c9022F6a0bb5931Ac4c18F00"
           />
           <StakePool
             poolName="gNORO-AVAX"
             icons={[gNoroImage, avaxImage]}
             stakeOn="Pangolin"
-            // apy={"18.00% + 68.00%"}
             href="https://app.pangolin.exchange/#/png/0x321E7092a180BB43555132ec53AaA65a5bF84251/AVAX/2"
           />
-          {/*<StakePool
-            poolName="gNORO-wETH"
-            icons={[gNoroImage, wEthImage]}
-            stakeOn="Sushi (Arbitrum)"
-            // apy={"43.99% + 4.65%"}
-            href="https://app.sushi.com/farm?filter=2x"
-          />
-          <StakePool
-            poolName="gNORO-wETH"
-            icons={[gNoroImage, wEthImage]}
-            stakeOn="Sushi (Polygon)"
-            // apy={"62.98% + 10.90%"}
-            href="https://app.sushi.com/farm?filter=2x"
-          />*/}
-          {/* <StakePool
-            poolName="gOHM-FTM"
-            icons={[gNoroImage, ftmImage]}
-            stakeOn="SpiritSwap"
-            apy={"10031"}
-            href="https://swap.spiritswap.finance/#/exchange/swap/0x91fa20244Fb509e8289CA630E5db3E9166233FDc"
-          /> */}
         </Box>
       </Paper>
     </Zoom>

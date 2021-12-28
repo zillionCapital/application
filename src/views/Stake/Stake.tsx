@@ -532,7 +532,7 @@ function Stake() {
         </Paper>
       </Zoom>
       <ZapCta />
-      <ExternalStakePool />
+      {/*<ExternalStakePool />*/}
     </div>
   );
 }
