@@ -176,7 +176,7 @@ function InitialWalletView({ onClose }: { onClose: () => void }) {
           <Divider color="secondary" />
         </Box>
 
-        <Box
+        {/*<Box
           sx={{
             ...(isSmallScreen
               ? { display: "flex", flexDirection: "column" }
@@ -204,7 +204,7 @@ function InitialWalletView({ onClose }: { onClose: () => void }) {
               <Typography>Shadow's dashboard</Typography>
             </ExternalLink>
           </Box>
-        </Box>
+        </Box>*/}
 
         <Box sx={{ marginTop: "auto", marginX: "auto", padding: theme.spacing(2) }}>
           <DisconnectButton />
