@@ -5,7 +5,7 @@ import { t, Trans } from "@lingui/macro";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { ReactComponent as avaxImage } from "src/assets/tokens/AVAX.svg";
-import { ReactComponent as gOhmImage } from "src/assets/tokens/token_wsOHM.svg";
+import { ReactComponent as gNoroImage } from "src/assets/tokens/token_NORO.svg";
 import { ReactComponent as wEthImage } from "src/assets/tokens/wETH.svg";
 import { ReactComponent as ArrowUp } from "../../assets/icons/arrow-up.svg";
 import { useWeb3Context } from "src/hooks/web3Context";
@@ -123,35 +123,35 @@ export default function ExternalStakePool() {
         >
           <StakePool
             poolName="gNORO-AVAX"
-            icons={[gOhmImage, avaxImage]}
+            icons={[gNoroImage, avaxImage]}
             stakeOn="Trader Joe"
             // apy={"11.08% + 28.51%"}
             href="https://traderjoexyz.com/#/farm/0xB674f93952F02F2538214D4572Aa47F262e990Ff-0x188bED1968b795d5c9022F6a0bb5931Ac4c18F00"
           />
           <StakePool
             poolName="gNORO-AVAX"
-            icons={[gOhmImage, avaxImage]}
+            icons={[gNoroImage, avaxImage]}
             stakeOn="Pangolin"
             // apy={"18.00% + 68.00%"}
             href="https://app.pangolin.exchange/#/png/0x321E7092a180BB43555132ec53AaA65a5bF84251/AVAX/2"
           />
           {/*<StakePool
             poolName="gNORO-wETH"
-            icons={[gOhmImage, wEthImage]}
+            icons={[gNoroImage, wEthImage]}
             stakeOn="Sushi (Arbitrum)"
             // apy={"43.99% + 4.65%"}
             href="https://app.sushi.com/farm?filter=2x"
           />
           <StakePool
             poolName="gNORO-wETH"
-            icons={[gOhmImage, wEthImage]}
+            icons={[gNoroImage, wEthImage]}
             stakeOn="Sushi (Polygon)"
             // apy={"62.98% + 10.90%"}
             href="https://app.sushi.com/farm?filter=2x"
           />*/}
           {/* <StakePool
             poolName="gOHM-FTM"
-            icons={[gOhmImage, ftmImage]}
+            icons={[gNoroImage, ftmImage]}
             stakeOn="SpiritSwap"
             apy={"10031"}
             href="https://swap.spiritswap.finance/#/exchange/swap/0x91fa20244Fb509e8289CA630E5db3E9166233FDc"
