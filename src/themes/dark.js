@@ -7,36 +7,28 @@ import commonSettings, { handleBackdropFilter } from "./global.js";
 
 const darkTheme = {
   color: "#FCFCFC",
-  gold: "#F8CC82",
+  gold: "#rgba(249, 225, 127, 1)",
   gray: "#A3A3A3",
-  textHighlightColor: "#F4D092",
-  backgroundColor: "rgba(8, 15, 53, 1)",
-  background: `
-    linear-gradient(180deg, rgba(8, 15, 53, 0), rgba(0, 0, 10, 0.9)),
-    linear-gradient(333deg, rgba(153, 207, 255, 0.2), rgba(180, 255, 217, 0.08)),
-    radial-gradient(circle at 77% 89%, rgba(125, 163, 169, 0.8), rgba(125, 163, 169, 0) 50%),
-    radial-gradient(circle at 15% 95%, rgba(125, 163, 169, 0.8), rgba(125, 163, 169, 0) 43%),
-    radial-gradient(circle at 65% 23%, rgba(137, 151, 119, 0.4), rgba(137, 151, 119, 0) 70%),
-    radial-gradient(circle at 10% 0%, rgba(187, 211, 204, 0.33), rgba(187,211,204,0) 35%),
-    radial-gradient(circle at 11% 100%, rgba(131, 165, 203, 0.3), rgba(131, 165, 203, 0) 30%)
-    `,
-  paperBg: "rgba(54, 56, 64, 0.6)",
+  textHighlightColor: "rgba(243, 168, 84, 1)",
+  backgroundColor: "rgba(15, 23, 38, 1)",
+  background: `rgba(2, 6, 13, 1)`,
+  paperBg: "rgba(2, 6, 13, 1)",
   modalBg: "#24242699",
-  popoverBg: "rgba(54, 56, 64, 0.99)",
-  menuBg: handleBackdropFilter("rgba(54, 56, 64, 0.5)"),
-  backdropBg: "rgba(54, 56, 64, 0.5)",
-  largeTextColor: "#F4D092",
-  activeLinkColor: "#F5DDB4",
+  popoverBg: "rgba(33, 62, 77, 1)",
+  menuBg: "rgba(17, 32, 59, 1)",
+  backdropBg: "rgba(15, 23, 38, 1)",
+  largeTextColor: "rgba(243, 168, 84, 1)",
+  activeLinkColor: "rgba(241, 170, 94, 1",
   activeLinkSvgColor:
     "brightness(0) saturate(100%) invert(84%) sepia(49%) saturate(307%) hue-rotate(326deg) brightness(106%) contrast(92%)",
   primaryButtonColor: "#333333",
-  primaryButtonBG: "#F4D092",
+  primaryButtonBG: "#rgba(243, 168, 84, 1)",
   primaryButtonHoverBG: "#EDD8B4",
   secondaryButtonHoverBG: "rgba(54, 56, 64, 1)",
-  outlinedPrimaryButtonHoverBG: "#F8CC82",
+  outlinedPrimaryButtonHoverBG: "#rgba(249, 225, 127, 1)",
   outlinedPrimaryButtonHoverColor: "#333333",
   outlinedSecondaryButtonHoverBG: "transparent",
-  outlinedSecondaryButtonHoverColor: "#F8CC82", //gold
+  outlinedSecondaryButtonHoverColor: "#rgba(249, 225, 127, 1)", //gold
   containedSecondaryButtonHoverBG: "rgba(255, 255, 255, 0.15)",
   graphStrokeColor: "rgba(255, 255, 255, .1)",
   gridButtonHoverBackground: "rgba(255, 255, 255, 0.6)",
@@ -110,7 +102,7 @@ export const dark = responsiveFontSizes(
         },
         MuiSelect: {
           select: {
-            color: "#F8CC82",
+            color: "#rgba(249, 225, 127, 1)",
           },
         },
         MuiPaper: {
@@ -283,7 +275,7 @@ export const dark = responsiveFontSizes(
             },
             "&:active": {
               color: darkTheme.gold,
-              borderBottom: "#F8CC82",
+              borderBottom: "#rgba(249, 225, 127, 1)",
             },
           },
           textSecondary: {
