@@ -46,8 +46,10 @@ export const balancesOf = async (address: string, networkId: NetworkID): Promise
 };
 
 const Networks = [
-  NetworkID.Mainnet,
   NetworkID.Avalanche,
+  NetworkID.Fuji,
+  NetworkID.Localhost,
+  NetworkID.Mainnet,
   NetworkID.Arbitrum,
   // covalent does not support rinkeby
   // ...(process.env.NODE_ENV === "development" ? [NetworkID.AvalancheTestnet, NetworkID.ArbitrumTestnet] : []),
@@ -74,12 +76,12 @@ export const fetchCrossChainBalances = async (address: string) => {
   ).then(arr => arr.reduce((acc, networkBalances) => [...acc, ...networkBalances], []));
 
   return {
+    // ohm: balanceByAddress(balances, addresses[NetworkID.Mainnet].OHM_V2),
+    // sohm: balanceByAddress(balances, addresses[NetworkID.Mainnet].SOHM_V2),
     gohm: addressBalancesByNetwork(Networks, balances, "GOHM_ADDRESS"),
     wsohm: addressBalancesByNetwork(Networks, balances, "WSOHM_ADDRESS"),
     // ohmV1: balanceByAddress(balances, addresses[NetworkID.Mainnet].OHM_ADDRESS),
     // sohmV1: balanceByAddress(balances, addresses[NetworkID.Mainnet].SOHM_ADDRESS),
     // pool: balanceByAddress(balances, addresses[NetworkID.Mainnet].PT_TOKEN_ADDRESS),
-    // ohm: balanceByAddress(balances, addresses[NetworkID.Mainnet].OHM_V2),
-    // sohm: balanceByAddress(balances, addresses[NetworkID.Mainnet].SOHM_V2),
   };
 };

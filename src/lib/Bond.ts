@@ -9,12 +9,13 @@ import { addresses } from "src/constants";
 import React from "react";
 
 export enum NetworkID {
+  Avalanche = 43114,
+  Fuji = 43113,
+  Localhost = 31337,
   Mainnet = 1,
   Testnet = 4,
   Arbitrum = 42161,
   ArbitrumTestnet = 421611,
-  AvalancheTestnet = 43113,
-  Avalanche = 43114,
 }
 
 export enum BondType {
@@ -28,21 +29,23 @@ export interface BondAddresses {
 }
 
 export interface NetworkAddresses {
+  [NetworkID.Avalanche]?: BondAddresses;
+  [NetworkID.Fuji]?: BondAddresses;
+  [NetworkID.Localhost]?: BondAddresses;
   [NetworkID.Mainnet]?: BondAddresses;
   [NetworkID.Testnet]?: BondAddresses;
   [NetworkID.Arbitrum]?: BondAddresses;
   [NetworkID.ArbitrumTestnet]?: BondAddresses;
-  [NetworkID.Avalanche]?: BondAddresses;
-  [NetworkID.AvalancheTestnet]?: BondAddresses;
 }
 
 export interface Available {
+  [NetworkID.Avalanche]: boolean;
+  [NetworkID.Fuji]: boolean;
+  [NetworkID.Localhost]: boolean;
   [NetworkID.Mainnet]: boolean;
   [NetworkID.Testnet]: boolean;
   [NetworkID.Arbitrum]: boolean;
   [NetworkID.ArbitrumTestnet]: boolean;
-  [NetworkID.Avalanche]: boolean;
-  [NetworkID.AvalancheTestnet]: boolean;
 }
 
 interface BondOpts {

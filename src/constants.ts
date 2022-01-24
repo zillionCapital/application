@@ -130,20 +130,20 @@ export const addresses: IAddresses = {
     REDEEM_HELPER_ADDRESS: "0xE1e83825613DE12E8F0502Da939523558f0B819E",
   }, // TODO: Replace with Arbitrum Testnet contract addresses when ready
   43113: {
-    DAI_ADDRESS: "",
-    OHM_ADDRESS: "",
-    STAKING_ADDRESS: "", // The new staking contract
+    DAI_ADDRESS: "0x741482567C35F231eAdB2299a39e0680a89Aff47",
+    OHM_ADDRESS: "0x9E8be14d6Ea4551c072654b0D07c5e675195a8d5",
+    STAKING_ADDRESS: "0x5A5d1DAAFDCF599EAd80Ae2Fa91a3b46829163E2", // The new staking contract
     STAKING_HELPER_ADDRESS: "", // Helper contract used for Staking only
     OLD_STAKING_ADDRESS: "",
-    SOHM_ADDRESS: "",
+    SOHM_ADDRESS: "0x1a431eeD368CF21BCa8eBFC19447F8d35128C44C",
     OLD_SOHM_ADDRESS: "",
     PRESALE_ADDRESS: "",
     AOHM_ADDRESS: "",
-    MIGRATE_ADDRESS: "",
-    DISTRIBUTOR_ADDRESS: "",
+    MIGRATE_ADDRESS: "0x63e0AdD7cC59966853daEfBA5CCfc8143C4Eb415",
+    DISTRIBUTOR_ADDRESS: "0x80d21b1FBE24190e2bE6A9dA576014f79C167f94",
     BONDINGCALC_ADDRESS: "",
     CIRCULATING_SUPPLY_ADDRESS: "",
-    TREASURY_ADDRESS: "",
+    TREASURY_ADDRESS: "0xFdbf8545E53645095F941c58aCe1A156003c68dF",
     PICKLE_OHM_LUSD_ADDRESS: "",
     REDEEM_HELPER_ADDRESS: "",
     // WSOHM_ADDRESS: "",
@@ -170,7 +170,28 @@ export const addresses: IAddresses = {
     WSOHM_ADDRESS: "0x8cd309e14575203535ef120b5b0ab4dded0c2073",
     GOHM_ADDRESS: "0x321e7092a180bb43555132ec53aaa65a5bf84251",
     MIGRATOR_ADDRESS: "0xB10209BFbb37d38EC1B5F0c964e489564e223ea7",
-  }, // TODO: Avalanche Mainnet addresses
+  }, // TODO: Avalanche Mainnet addresses 31337
+  31337: {
+    DAI_ADDRESS: "",
+    OHM_ADDRESS: "0x0B7108B29ad73097cF7E549D542915348d885e5f",
+    // STAKING_ADDRESS: "", // The new staking contract
+    STAKING_HELPER_ADDRESS: "0x08A90aF9A6eBBe11c322AD9930CC58E122231B5A", // Helper contract used for Staking only
+    OLD_STAKING_ADDRESS: "",
+    SOHM_ADDRESS: "0xEbFE59025761DB00993d75C33C58271aABA88E4E",
+    OLD_SOHM_ADDRESS: "",
+    PRESALE_ADDRESS: "",
+    AOHM_ADDRESS: "",
+    MIGRATE_ADDRESS: "0x3153eDfaBE7608A97d0Cb02929917FE90cE2CB87",
+    DISTRIBUTOR_ADDRESS: "0x7E6C94173C264aaE66Bf36ce047b0Aef585C2181",
+    BONDINGCALC_ADDRESS: "0xcb65A63B74F009A1C724AC221601d7DDD90f67C2",
+    CIRCULATING_SUPPLY_ADDRESS: "",
+    TREASURY_ADDRESS: "0x53AAfBd184086d72fA233AE83e1a7B1339B5415C",
+    PICKLE_OHM_LUSD_ADDRESS: "",
+    REDEEM_HELPER_ADDRESS: "",
+    WSOHM_ADDRESS: "0x8cd309e14575203535ef120b5b0ab4dded0c2073",
+    GOHM_ADDRESS: "0x321e7092a180bb43555132ec53aaa65a5bf84251",
+    MIGRATOR_ADDRESS: "0xB10209BFbb37d38EC1B5F0c964e489564e223ea7",
+  }, // TODO: Avalanche Mainnet addresses 31337
 };
 
 /**
@@ -288,18 +309,18 @@ export const NETWORKS: { [key: number]: INetwork } = {
     uri: () => NodeHelper.getMainnetURI(43114),
   },
   31337: {
-    chainName: "Local",
+    chainName: "Localhost",
     chainId: 31337,
     nativeCurrency: {
-      name: "ETH",
-      symbol: "ETH",
+      name: "AVAX",
+      symbol: "AVAX",
       decimals: 18,
     },
     rpcUrls: ["http://127.0.0.1:8545/"],
     blockExplorerUrls: [],
-    image: ethereum,
-    imageAltText: "Ethereum Logo",
-    uri: () => NodeHelper.getMainnetURI(43114),
+    image: avalanche,
+    imageAltText: "Avalanche Logo",
+    uri: () => NodeHelper.getMainnetURI(31337),
   },
 };
 

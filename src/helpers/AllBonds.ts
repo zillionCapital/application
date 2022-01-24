@@ -47,8 +47,9 @@ export const dai = new StableBond({
     [NetworkID.Testnet]: false,
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
-    [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Avalanche]: true,
+    [NetworkID.Fuji]: true,
+    [NetworkID.Localhost]: true,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -56,7 +57,8 @@ export const dai = new StableBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: true,
   },
   LOLmessage: "Sold Out",
   isClaimable: {
@@ -64,15 +66,16 @@ export const dai = new StableBond({
     [NetworkID.Testnet]: true,
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
-    [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Avalanche]: true,
+    [NetworkID.Fuji]: true,
+    [NetworkID.Localhost]: true,
   },
   networkAddrs: {
-    [NetworkID.Mainnet]: {
+    [NetworkID.Avalanche]: {
       bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
       reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     },
-    [NetworkID.Testnet]: {
+    [NetworkID.Fuji]: {
       bondAddress: "0xDea5668E815dAF058e3ecB30F645b04ad26374Cf",
       reserveAddress: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C",
     },
@@ -93,7 +96,8 @@ export const fraxOld = new StableBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -101,7 +105,8 @@ export const fraxOld = new StableBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "Gone Fishin'",
   isClaimable: {
@@ -110,7 +115,8 @@ export const fraxOld = new StableBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -133,20 +139,22 @@ export const frax = new StableBond({
   bondIconSvg: FraxImg,
   bondContractABI: FraxBondContract,
   isBondable: {
-    [NetworkID.Mainnet]: true,
+    [NetworkID.Mainnet]: false,
     [NetworkID.Testnet]: false,
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
-    [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Avalanche]: true,
+    [NetworkID.Fuji]: true,
+    [NetworkID.Localhost]: true,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
     [NetworkID.Testnet]: false,
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
-    [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Avalanche]: true,
+    [NetworkID.Fuji]: true,
+    [NetworkID.Localhost]: true,
   },
   LOLmessage: "",
   isClaimable: {
@@ -154,17 +162,18 @@ export const frax = new StableBond({
     [NetworkID.Testnet]: true,
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
-    [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Avalanche]: true,
+    [NetworkID.Fuji]: true,
+    [NetworkID.Localhost]: true,
   },
   networkAddrs: {
-    [NetworkID.Mainnet]: {
-      bondAddress: "0xc60a6656e08b62DD2644DC703d7855301363Cc38",
-      reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
+    [NetworkID.Avalanche]: {
+      bondAddress: "0xc60a6656e08b62DD2644DC703d7855301363Cc38", // XXX
+      reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e", // XXX
     },
-    [NetworkID.Testnet]: {
-      bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738",
-      reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453",
+    [NetworkID.Fuji]: {
+      bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738", // XXX
+      reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453", // XXX
     },
   },
 });
@@ -183,7 +192,8 @@ export const lusd = new StableBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -191,7 +201,8 @@ export const lusd = new StableBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "",
   isClaimable: {
@@ -200,7 +211,8 @@ export const lusd = new StableBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -231,7 +243,8 @@ export const eth = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -239,7 +252,8 @@ export const eth = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "Taking a Spa Day",
   isClaimable: {
@@ -248,7 +262,8 @@ export const eth = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -288,7 +303,8 @@ export const cvx = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -296,7 +312,8 @@ export const cvx = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "",
   isClaimable: {
@@ -305,7 +322,8 @@ export const cvx = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -345,7 +363,8 @@ export const cvx_expired = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -353,7 +372,8 @@ export const cvx_expired = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "",
   isClaimable: {
@@ -362,7 +382,8 @@ export const cvx_expired = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -399,7 +420,8 @@ export const ohm_dai = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -407,7 +429,8 @@ export const ohm_dai = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "",
   isClaimable: {
@@ -416,7 +439,8 @@ export const ohm_dai = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -448,7 +472,8 @@ export const ohm_daiOld = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -456,7 +481,8 @@ export const ohm_daiOld = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "",
   isClaimable: {
@@ -465,7 +491,8 @@ export const ohm_daiOld = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -496,7 +523,8 @@ export const ohm_frax = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -504,7 +532,8 @@ export const ohm_frax = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "Out of Office",
   isClaimable: {
@@ -513,7 +542,8 @@ export const ohm_frax = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -544,7 +574,8 @@ export const ohm_fraxOld = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -552,7 +583,8 @@ export const ohm_fraxOld = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "Out of Office",
   isClaimable: {
@@ -561,7 +593,8 @@ export const ohm_fraxOld = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -592,7 +625,8 @@ export const ohm_lusd = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -600,7 +634,8 @@ export const ohm_lusd = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "",
   isClaimable: {
@@ -609,7 +644,8 @@ export const ohm_lusd = new LPBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -641,7 +677,8 @@ export const ohm_weth = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -649,7 +686,8 @@ export const ohm_weth = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "Maternity Leave",
   isClaimable: {
@@ -658,7 +696,8 @@ export const ohm_weth = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
@@ -719,7 +758,8 @@ export const ohm_wethOld = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   isLOLable: {
     [NetworkID.Mainnet]: false,
@@ -727,7 +767,8 @@ export const ohm_wethOld = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   LOLmessage: "Maternity Leave",
   isClaimable: {
@@ -736,7 +777,8 @@ export const ohm_wethOld = new CustomBond({
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
-    [NetworkID.AvalancheTestnet]: false,
+    [NetworkID.Fuji]: false,
+    [NetworkID.Localhost]: false,
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
