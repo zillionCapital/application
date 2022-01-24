@@ -13,7 +13,7 @@ const darkTheme = {
   backgroundColor: "rgba(15, 23, 38, 1)",
   background: `rgba(2, 6, 13, 1)`,
   paperBg: "rgba(2, 6, 13, 1)",
-  modalBg: "#24242699",
+  modalBg: "rgba(33, 62, 77, 1)",
   popoverBg: "rgba(33, 62, 77, 1)",
   menuBg: "rgba(17, 32, 59, 1)",
   backdropBg: "rgba(15, 23, 38, 1)",
@@ -23,7 +23,7 @@ const darkTheme = {
     "brightness(0) saturate(100%) invert(84%) sepia(49%) saturate(307%) hue-rotate(326deg) brightness(106%) contrast(92%)",
   primaryButtonColor: "#333333",
   primaryButtonBG: "#rgba(243, 168, 84, 1)",
-  primaryButtonHoverBG: "#EDD8B4",
+  primaryButtonHoverBG: "rgba(249, 225, 127, 1)",
   secondaryButtonHoverBG: "rgba(54, 56, 64, 1)",
   outlinedPrimaryButtonHoverBG: "#rgba(249, 225, 127, 1)",
   outlinedPrimaryButtonHoverColor: "#333333",
@@ -33,7 +33,7 @@ const darkTheme = {
   graphStrokeColor: "rgba(255, 255, 255, .1)",
   gridButtonHoverBackground: "rgba(255, 255, 255, 0.6)",
   gridButtonActiveBackground: "#00000038",
-  switchBg: "#333333",
+  switchBg: "rgba(17, 32, 59, 1)",
 };
 
 export const dark = responsiveFontSizes(
