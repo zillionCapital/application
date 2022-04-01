@@ -20,7 +20,7 @@ export const bend = new CustomBond({
             reserveAddress: "0x130966628846BFd36ff31a822705796e8cb8C18D",
         },
         [Networks.AVAX_TEST]: {
-            bondAddress: "0xDa2201abf976fa6B25b010D781ab875d75B51959",
+            bondAddress: "0xaDa86855a8D2229fe370DAFFA5E8F37B1cD147bd",
             reserveAddress: "0x19a1165A79AFAAeFd805969B32a0640d4Db9f131",
         },
     },
@@ -41,7 +41,7 @@ export const wavax = new CustomBond({
             reserveAddress: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
         },
         [Networks.AVAX_TEST]: {
-            bondAddress: "0x9B4E2b8a9860B8e01af4d47133404153e71Af6Ed",
+            bondAddress: "0xe30e686b165452189A5a88B423Dec6E6EaA2B4BC",
             reserveAddress: "0xd00ae08403B9bbb9124bB305C09058E32C39A48c",
         },
     },

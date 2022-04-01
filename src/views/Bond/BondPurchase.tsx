@@ -205,11 +205,6 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                         <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondQuote, 2)} NORO`}</p>
                     </div>
 
-                    {/* <div className={`data-row`}>
-                        <p className="bond-balance-title">Max You Can Buy</p>
-                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4)} NORO`}</p>
-                    </div> */}
-
                     <div className="data-row">
                         <p className="bond-balance-title">ROI</p>
                         <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
@@ -223,6 +218,11 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                     <div className="data-row">
                         <p className="bond-balance-title">Minimum purchase</p>
                         <p className="bond-balance-title">0.01 NORO</p>
+                    </div>
+
+                    <div className={`data-row`}>
+                        <p className="bond-balance-title">Max You Can Buy</p>
+                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 2)} NORO`}</p>
                     </div>
                 </Box>
             </Slide>

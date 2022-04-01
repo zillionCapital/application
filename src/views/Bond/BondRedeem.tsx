@@ -24,7 +24,6 @@ function BondRedeem({ bond }: IBondRedeem) {
     const currentBlockTime = useSelector<IReduxState, number>(state => {
         return state.app.currentBlockTime;
     });
-    console.log("==========>  currentBlockTime: ", currentBlockTime);
 
     const pendingTransactions = useSelector<IReduxState, IPendingTxn[]>(state => {
         return state.pendingTransactions;

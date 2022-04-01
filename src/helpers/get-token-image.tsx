@@ -1,5 +1,5 @@
-import SabImg from "../assets/tokens/SAB.png";
-import SSabImg from "../assets/tokens/SSAB.png";
+import NoroImg from "../assets/tokens/NORO.png";
+import SNoroImg from "../assets/tokens/SNORO.png";
 
 function toUrl(tokenPath: string): string {
     const host = window.location.origin;
@@ -7,12 +7,12 @@ function toUrl(tokenPath: string): string {
 }
 
 export function getTokenUrl(name: string) {
-    if (name === "sab") {
-        return toUrl(SabImg);
+    if (name === "noro") {
+        return toUrl(NoroImg);
     }
 
-    if (name === "ssab") {
-        return toUrl(SSabImg);
+    if (name === "snoro") {
+        return toUrl(SNoroImg);
     }
 
     throw Error(`Token url doesn't support: ${name}`);
