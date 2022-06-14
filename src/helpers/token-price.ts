@@ -9,7 +9,7 @@ export const loadTokenPrices = async () => {
     cache["AVAX"] = data["avalanche-2"].usd;
     cache["MIM"] = data["magic-internet-money"].usd;
     cache["ETH"] = data["weth"].usd;
-    cache["BEND"] = 0.001;
+    cache["BEND"] = 0.000003;
 };
 
 export const getTokenPrice = (symbol: string): number => {
