@@ -1,5 +1,5 @@
 import { ethers, constants } from "ethers";
-import { getTokenPrice } from "../../helpers";
+import { getTokenPrice, getMarketPrice } from "../../helpers";
 import { calculateUserBondDetails, getBalances } from "./account-slice";
 import { SabTokenContract, SSabTokenContract } from "../../abi";
 import { getAddresses } from "../../constants";
@@ -159,7 +159,8 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const terms = await bondContract.terms();
     const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
 
-    let marketPrice = 5; //await getMarketPrice(networkID, provider);
+    let marketPrice = await getMarketPrice(networkID, provider);
+    console.log(marketPrice);
 
     // const mimPrice = getTokenPrice("MIM");
     // marketPrice = (marketPrice / Math.pow(10, 9)) * mimPrice;
