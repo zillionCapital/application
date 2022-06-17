@@ -52,13 +52,12 @@ export const loadAppDetails = createAsyncThunk(
         const epoch = await stakingContract.epoch();
         console.log(epoch);
 
-        const stakingReward = epoch.distribute;
-        // const stakingReward = 1648656000;
-        console.log(stakingReward);
+        // const stakingReward = epoch.distribute;
+        const stakingReward = 91199;
 
         // const rebase = await ssabContract.rebases(epoch.number - 3);
         // const circ = rebase.totalStakedAfter;
-        // const circ1 = 1780778604010;
+
         const circ1 = await ssabContract.circulatingSupply();
         console.log(circ1);
 
