@@ -27,6 +27,7 @@ export const loadAppDetails = createAsyncThunk(
         const sabContract = new ethers.Contract(addresses.NORO_ADDRESS, SabTokenContract, provider);
 
         const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * bendPrice;
+        // const marketPrice = (await getMarketPrice(networkID, provider)) / Math.pow(10, 9);
 
         const totalSupply = (await sabContract.totalSupply()) / Math.pow(10, 9);
         const circSupply = (await ssabContract.circulatingSupply()) / Math.pow(10, 9);
@@ -52,8 +53,8 @@ export const loadAppDetails = createAsyncThunk(
         const epoch = await stakingContract.epoch();
         console.log(epoch);
 
-        // const stakingReward = epoch.distribute;
-        const stakingReward = 91199;
+        const stakingReward = epoch.distribute;
+        // const stakingReward = 91199;
 
         // const rebase = await ssabContract.rebases(epoch.number - 3);
         // const circ = rebase.totalStakedAfter;
