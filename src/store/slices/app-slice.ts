@@ -26,14 +26,11 @@ export const loadAppDetails = createAsyncThunk(
         const ssabContract = new ethers.Contract(addresses.SNORO_ADDRESS, SSabTokenContract, provider);
         const sabContract = new ethers.Contract(addresses.NORO_ADDRESS, SabTokenContract, provider);
 
-        const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * bendPrice;
+        // const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * bendPrice;
         // const marketPrice = (await getMarketPrice(networkID, provider)) / Math.pow(10, 9);
 
         const totalSupply = (await sabContract.totalSupply()) / Math.pow(10, 9);
         const circSupply = (await ssabContract.circulatingSupply()) / Math.pow(10, 9);
-
-        const stakingTVL = circSupply * marketPrice;
-        const marketCap = totalSupply * marketPrice;
 
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
@@ -49,6 +46,10 @@ export const loadAppDetails = createAsyncThunk(
         const timeSupply = totalSupply - timeAmount;
 
         const rfv = rfvTreasury / timeSupply;
+        const marketPrice = rfvTreasury / timeSupply; // Placeholder until LP
+
+        const stakingTVL = circSupply * marketPrice;
+        const marketCap = totalSupply * marketPrice;
 
         const epoch = await stakingContract.epoch();
         // console.log(epoch);
