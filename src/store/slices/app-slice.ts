@@ -51,7 +51,7 @@ export const loadAppDetails = createAsyncThunk(
         const rfv = rfvTreasury / timeSupply;
 
         const epoch = await stakingContract.epoch();
-        console.log(epoch);
+        // console.log(epoch);
 
         const stakingReward = epoch.distribute;
         // const stakingReward = 91199;
@@ -60,7 +60,7 @@ export const loadAppDetails = createAsyncThunk(
         // const circ = rebase.totalStakedAfter;
 
         const circ1 = await ssabContract.circulatingSupply();
-        console.log(circ1);
+        // console.log(circ1);
 
         const stakingRebase = stakingReward / circ1;
         const fiveDayRate = Math.pow(1 + stakingRebase, 5 * 3) - 1;

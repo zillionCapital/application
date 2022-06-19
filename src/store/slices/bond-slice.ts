@@ -145,6 +145,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     }
 
     const amountInWei = ethers.utils.parseEther(value);
+    // console.log("Bond value in wei (amountInWei) : ", amountInWei);
 
     let bondPrice = 0,
         bondDiscount = 0,
@@ -366,6 +367,7 @@ export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, a
         if (useAvax) {
             bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, { value: valueInWei, gasPrice });
         } else {
+            // console.log("Bend value : ", valueInWei);
             bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, { gasPrice });
         }
         dispatch(
