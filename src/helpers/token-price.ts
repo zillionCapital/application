@@ -8,7 +8,7 @@ export const loadTokenPrices = async () => {
 
     cache["AVAX"] = data["avalanche-2"].usd;
     cache["ETH"] = data["weth"].usd;
-    cache["BEND"] = 0.001; // Price in USD
+    cache["BEND"] = 0.000003; // Price in USD
 };
 
 export const getTokenPrice = (symbol: string): number => {
