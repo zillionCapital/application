@@ -1,11 +1,15 @@
 import { Networks } from "../../constants/blockchain";
 import { LPBond, CustomLPBond } from "./lp-bond";
 import { StableBond, CustomBond } from "./stable-bond";
+import { getAddresses } from "../../constants";
 
 import BendIcon from "../../assets/tokens/BEND.svg";
 import AvaxIcon from "../../assets/tokens/WAVAX.png";
 
 import { MimBondContract, WavaxBondContract, MimTokenContract, WavaxTokenContract } from "../../abi";
+
+const addressesFuji = getAddresses(43113);
+const addressesAvax = getAddresses(43114);
 
 export const bend = new CustomBond({
     name: "bend",
@@ -16,11 +20,11 @@ export const bend = new CustomBond({
     reserveContractAbi: MimTokenContract,
     networkAddrs: {
         [Networks.AVAX_MAIN]: {
-            bondAddress: "0x901A9D9226B17A55fc4cD8547acF51D315a9D1Dd",
+            bondAddress: addressesAvax.BONDEPOSITORY_BEND,
             reserveAddress: "0x130966628846BFd36ff31a822705796e8cb8C18D",
         },
         [Networks.AVAX_TEST]: {
-            bondAddress: "0xaDa86855a8D2229fe370DAFFA5E8F37B1cD147bd",
+            bondAddress: addressesFuji.BONDEPOSITORY_BEND,
             reserveAddress: "0x19a1165A79AFAAeFd805969B32a0640d4Db9f131",
         },
     },
@@ -37,11 +41,11 @@ export const wavax = new CustomBond({
     reserveContractAbi: WavaxTokenContract,
     networkAddrs: {
         [Networks.AVAX_MAIN]: {
-            bondAddress: "0xDF636983103717Aa90bb5a65859C95F0CB8862ae",
+            bondAddress: addressesAvax.BONDEPOSITORY_AVAX,
             reserveAddress: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
         },
         [Networks.AVAX_TEST]: {
-            bondAddress: "0xe30e686b165452189A5a88B423Dec6E6EaA2B4BC",
+            bondAddress: addressesFuji.BONDEPOSITORY_AVAX,
             reserveAddress: "0xd00ae08403B9bbb9124bB305C09058E32C39A48c",
         },
     },

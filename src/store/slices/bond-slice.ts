@@ -1,5 +1,5 @@
 import { ethers, constants } from "ethers";
-import { getTokenPrice } from "../../helpers";
+import { getTokenPrice, getMarketPrice } from "../../helpers";
 import { calculateUserBondDetails, getBalances } from "./account-slice";
 import { SabTokenContract, SSabTokenContract } from "../../abi";
 import { getAddresses } from "../../constants";
@@ -145,6 +145,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     }
 
     const amountInWei = ethers.utils.parseEther(value);
+    // console.log("Bond value in wei (amountInWei) : ", amountInWei);
 
     let bondPrice = 0,
         bondDiscount = 0,
@@ -159,7 +160,8 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const terms = await bondContract.terms();
     const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
 
-    let marketPrice = 5; //await getMarketPrice(networkID, provider);
+    let marketPrice = await getMarketPrice(networkID, provider);
+    console.log(marketPrice);
 
     // const mimPrice = getTokenPrice("MIM");
     // marketPrice = (marketPrice / Math.pow(10, 9)) * mimPrice;
@@ -282,7 +284,7 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
 
     const terms = await bondContract.terms();
 
-    let marketPrice = 5; //await getMarketPrice(networkID, provider);
+    let marketPrice = await getMarketPrice(networkID, provider);
 
     // const mimPrice = getTokenPrice("MIM");
     // marketPrice = (marketPrice / Math.pow(10, 9)) * mimPrice;
@@ -365,6 +367,7 @@ export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, a
         if (useAvax) {
             bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, { value: valueInWei, gasPrice });
         } else {
+            // console.log("Bend value : ", valueInWei);
             bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, { gasPrice });
         }
         dispatch(
