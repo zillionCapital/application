@@ -1,8 +1,8 @@
 {
-  "short_name": "Wonderland",
+  "short_name": "Cunoro",
   "start_url": ".",
   "homepage": "./",
-  "name": "Wonderland",
+  "name": "Cunoro",
   "launch_path": "/public/index.html",
   "icons": [
     {
