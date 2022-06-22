@@ -29,6 +29,8 @@ export const loadAppDetails = createAsyncThunk(
         // const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * bendPrice;
         // const marketPrice = (await getMarketPrice(networkID, provider)) / Math.pow(10, 9);
 
+        // const marketPrice = await getMarketPrice(networkID, provider);
+
         const totalSupply = (await sabContract.totalSupply()) / Math.pow(10, 9);
         const circSupply = (await ssabContract.circulatingSupply()) / Math.pow(10, 9);
 

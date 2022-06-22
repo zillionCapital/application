@@ -284,7 +284,7 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
 
     const terms = await bondContract.terms();
 
-    let marketPrice = 1; //await getMarketPrice(networkID, provider);
+    let marketPrice = await getMarketPrice(networkID, provider);
 
     // const mimPrice = getTokenPrice("MIM");
     // marketPrice = (marketPrice / Math.pow(10, 9)) * mimPrice;
