@@ -1,12 +1,31 @@
 import { ethers } from "ethers";
-import { LpReserveContract } from "../abi";
-// import { mimTime } from "../helpers/bond";
+import { LpReserveContract, SabTokenContract } from "../abi";
 import { Networks } from "../constants/blockchain";
 
-export async function getMarketPrice(networkID: Networks, provider: ethers.Signer | ethers.providers.Provider): Promise<number> {
-    const mimTimeAddress = "0x0000000000000000000000000000000000000000"; //mimTime.getAddressForReserve(networkID);
-    const pairContract = new ethers.Contract(mimTimeAddress, LpReserveContract, provider);
-    const reserves = await pairContract.getReserves();
-    const marketPrice = reserves[0] / reserves[1];
-    return marketPrice;
+import { getAddresses } from "../constants";
+import allBonds from "./bond";
+
+export async function getMarketPrice(networkID: Networks, provider: any): Promise<number> {
+    // const mimTimeAddress = "0x0000000000000000000000000000000000000000"; //mimTime.getAddressForReserve(networkID);
+    // const pairContract = new ethers.Contract(mimTimeAddress, LpReserveContract, provider);
+    // const reserves = await pairContract.getReserves();
+    // const marketPrice = reserves[0] / reserves[1];
+    // return marketPrice;
+    //
+    const addresses = getAddresses(networkID);
+    const sabContract = new ethers.Contract(addresses.NORO_ADDRESS, SabTokenContract, provider);
+
+    const totalSupply = (await sabContract.totalSupply()) / Math.pow(10, 9);
+
+    const timeBondsAmountsPromises = allBonds.map(bond => bond.getTimeAmount(networkID, provider));
+    const timeBondsAmounts = await Promise.all(timeBondsAmountsPromises);
+    const timeAmount = timeBondsAmounts.reduce((timeAmount0, timeAmount1) => timeAmount0 + timeAmount1, 0);
+
+    const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
+    const tokenAmounts = await Promise.all(tokenAmountsPromises);
+
+    const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1, 0);
+    const timeSupply = totalSupply - timeAmount;
+
+    return rfvTreasury / timeSupply;
 }
