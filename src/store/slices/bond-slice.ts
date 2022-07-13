@@ -11,7 +11,7 @@ import { Bond } from "../../helpers/bond/bond";
 import { Networks } from "../../constants/blockchain";
 import { getBondCalculator } from "../../helpers/bond-calculator";
 import { RootState } from "../store";
-import { wavax, bend } from "../../helpers/bond";
+import { bend } from "../../helpers/bond";
 import { error, warning, success, info } from "../slices/messages-slice";
 import { messages } from "../../constants/messages";
 import { getGasPrice } from "../../helpers/get-gas-price";
@@ -19,6 +19,7 @@ import { metamaskErrorWrap } from "../../helpers/metamask-error-wrap";
 import { sleep } from "../../helpers";
 import { BigNumber } from "ethers";
 import { IAllBondData } from "src/hooks/bonds";
+import { getMarketPrice } from "../../helpers/get-market-price";
 
 interface IChangeApproval {
     bond: Bond;
@@ -159,10 +160,9 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const terms = await bondContract.terms();
     const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
 
-    let marketPrice = 5; //await getMarketPrice(networkID, provider);
+    let marketPrice = await getMarketPrice(networkID, provider);
 
-    // const mimPrice = getTokenPrice("MIM");
-    // marketPrice = (marketPrice / Math.pow(10, 9)) * mimPrice;
+    // marketPrice = (marketPrice / Math.pow(10, 9)) * bendPrice;
     const avaxPrice = getTokenPrice("AVAX");
     const ethPrice = getTokenPrice("ETH");
     const bendPrice = getTokenPrice("BEND");
@@ -198,16 +198,16 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         bondQuote = bondQuote / Math.pow(10, 18);
 
         maxBondQuote = await bondContract.payoutFor(maxBodValue);
-        if (bond.name === wavax.name) {
-            maxBondQuote = maxBondQuote * avaxPrice;
-        }
+        // if (bond.name === wavax.name) {
+        //     maxBondQuote = maxBondQuote * avaxPrice;
+        // }
         maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -18));
 
-        if (bond.name === wavax.name) {
-            bondQuote = bondQuote * avaxPrice;
-        } else if (bond.name === bend.name) {
-            bondQuote = bondQuote * 0.94 * 0.94 * bendPrice;
-        }
+        // if (bond.name === wavax.name) {
+        //     bondQuote = bondQuote * avaxPrice;
+        // } else if (bond.name === bend.name) {
+        //     bondQuote = bondQuote * 0.94 * 0.94 * bendPrice;
+        // }
     }
 
     // Calculate bonds purchased
@@ -231,12 +231,13 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         }
         purchased = purchased / Math.pow(10, reserveDecimal);
 
-        if (bond.name === wavax.name) {
-            purchased = purchased * avaxPrice;
-        } else if (bond.name === bend.name) {
-            purchased = purchased * bendPrice;
-        }
+        // if (bond.name === wavax.name) {
+        //     purchased = purchased * avaxPrice;
+        // } else if (bond.name === bend.name) {
+        //     purchased = purchased * bendPrice;
+        // }
     }
+    console.log(marketPrice);
 
     return {
         bond: bond.name,
@@ -282,10 +283,10 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
 
     const terms = await bondContract.terms();
 
-    let marketPrice = 5; //await getMarketPrice(networkID, provider);
+    let marketPrice = await getMarketPrice(networkID, provider);
 
-    // const mimPrice = getTokenPrice("MIM");
-    // marketPrice = (marketPrice / Math.pow(10, 9)) * mimPrice;
+    // const bendPrice = getTokenPrice("MIM");
+    // marketPrice = (marketPrice / Math.pow(10, 9)) * bendPrice;
     const avaxPrice = getTokenPrice("AVAX");
     const ethPrice = getTokenPrice("ETH");
 
@@ -305,9 +306,9 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
     withdrawQuote = parseFloat(value) * (1 - bondDiscount);
     let withdrawInGwei = Number(amountInWei) / Math.pow(10, 18);
 
-    if (bond.name === wavax.name) {
-        withdrawQuote = withdrawQuote / avaxPrice;
-    }
+    // if (bond.name === wavax.name) {
+    //     withdrawQuote = withdrawQuote / avaxPrice;
+    // }
 
     withdrawFee = withdrawQuote * 0.1;
     withdrawQuote -= withdrawFee;
@@ -324,9 +325,9 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
 
     purchased = purchased / Math.pow(10, bond.reserveDecimal);
 
-    if (bond.name === wavax.name) {
-        purchased = purchased * avaxPrice;
-    }
+    // if (bond.name === wavax.name) {
+    //     purchased = purchased * avaxPrice;
+    // }
 
     return {
         bond: bond.name,
