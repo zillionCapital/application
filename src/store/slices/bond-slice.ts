@@ -145,7 +145,9 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         value = "0";
     }
 
-    const amountInWei = ethers.utils.parseEther(value);
+    // const amountInWei = ethers.utils.parseEther(value);
+    const amountInWei = parseInt(value) * Math.pow(10, bond.reserveDecimal);
+    console.log(amountInWei);
 
     let bondPrice = 0,
         bondDiscount = 0,
@@ -176,7 +178,8 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         //     bondPrice = bondPrice * avaxPrice;
         // }
 
-        bondDiscount = (marketPrice * Math.pow(10, reserveDecimal) - bondPrice) / (marketPrice * Math.pow(10, reserveDecimal));
+        // bondDiscount = (marketPrice * Math.pow(10, reserveDecimal) - bondPrice) / (marketPrice * Math.pow(10, reserveDecimal));
+        bondDiscount = 0.2;
     } catch (e) {
         console.log("error getting bondPriceInUSD", e);
     }
@@ -195,7 +198,10 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -9));
     } else {
         bondQuote = await bondContract.payoutFor(amountInWei);
-        bondQuote = bondQuote / Math.pow(10, 18);
+        console.log("payout-for", bondQuote);
+
+        // bondQuote = bondQuote / Math.pow(10, 18);
+        bondQuote = parseInt(value) * bendPrice;
 
         maxBondQuote = await bondContract.payoutFor(maxBodValue);
         // if (bond.name === wavax.name) {
@@ -238,7 +244,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         // }
         purchased = purchased * bendPrice;
     }
-    console.log(marketPrice);
+    console.log(bondQuote);
 
     return {
         bond: bond.name,
@@ -269,7 +275,7 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
         value = "0";
     }
 
-    const amountInWei = ethers.utils.parseEther(value);
+    const amountInWei = parseInt(value) * Math.pow(10, bond.reserveDecimal);
 
     let bondPrice = 0,
         bondDiscount = 0,
@@ -290,6 +296,8 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
     // marketPrice = (marketPrice / Math.pow(10, 9)) * bendPrice;
     const avaxPrice = getTokenPrice("AVAX");
     const ethPrice = getTokenPrice("ETH");
+    const bendPrice = getTokenPrice("BEND");
+    let reserveDecimal = bond.reserveDecimal;
 
     try {
         bondPrice = await bondContract.bondPriceInUSD();
@@ -299,7 +307,7 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
         //     bondPrice = bondPrice * avaxPrice;
         // }
 
-        bondDiscount = (marketPrice * Math.pow(10, bond.reserveDecimal) - bondPrice) / (marketPrice * Math.pow(10, bond.reserveDecimal));
+        bondDiscount = 0.2;
     } catch (e) {
         console.log("error getting bondPriceInUSD", e);
     }
@@ -324,7 +332,7 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
     const token = bond.getContractForReserve(networkID, provider);
     let purchased = await token.balanceOf(addresses.TREASURY_ADDRESS);
 
-    purchased = purchased / Math.pow(10, bond.reserveDecimal);
+    purchased = purchased * bendPrice;
 
     // if (bond.name === wavax.name) {
     //     purchased = purchased * avaxPrice;
@@ -353,7 +361,9 @@ interface IBondAsset {
 export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, address, bond, networkID, provider, slippage, useAvax }: IBondAsset, { dispatch }) => {
     const depositorAddress = address;
     const acceptedSlippage = slippage / 100 || 0.005;
-    const valueInWei = ethers.utils.parseUnits(value, bond.reserveDecimal);
+    let valueInWei = ethers.utils.parseUnits(value, bond.reserveDecimal);
+    console.log(valueInWei);
+
     const signer = provider.getSigner();
     const bondContract = bond.getContractForBond(networkID, signer);
 
