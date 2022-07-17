@@ -46,7 +46,7 @@ function Bond({ bond }: IBondProps) {
                             <Box direction="row" className="bond-price-data-row">
                                 <div className="bond-price-data">
                                     <p className="bond-price-data-title">Bond Price</p>
-                                    <p className="bond-price-data-value">{isBondLoading ? <Skeleton /> : `$${trim(bond.bondPrice, 2)}`}</p>
+                                    <p className="bond-price-data-value">{isBondLoading ? <Skeleton /> : `$${trim(bond.marketPrice, 2)}`}</p> // TODO Switch Back to bondPrice
                                 </div>
                                 <div className="bond-price-data">
                                     <p className="bond-price-data-title">Market Price</p>
