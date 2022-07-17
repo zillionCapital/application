@@ -32,25 +32,25 @@ export const bend = new CustomBond({
     // tokensInStrategy: "60500000000000000000000000",
 });
 
-export const wavax = new CustomBond({
-    name: "wavax",
-    displayName: "wAVAX",
-    bondToken: "AVAX",
-    bondIconSvg: AvaxIcon,
-    bondContractABI: WavaxBondContract,
-    reserveContractAbi: WavaxTokenContract,
-    networkAddrs: {
-        [Networks.AVAX_MAIN]: {
-            bondAddress: addressesAvax.BONDEPOSITORY_AVAX,
-            reserveAddress: addressesAvax.WAVAX_ADDRESS,
-        },
-        [Networks.AVAX_TEST]: {
-            bondAddress: addressesFuji.BONDEPOSITORY_AVAX,
-            reserveAddress: addressesFuji.WAVAX_ADDRESS,
-        },
-    },
-    reserveDecimal: 18,
-    // tokensInStrategy: "756916000000000000000000",
-});
+// export const wavax = new CustomBond({
+//     name: "wavax",
+//     displayName: "wAVAX",
+//     bondToken: "AVAX",
+//     bondIconSvg: AvaxIcon,
+//     bondContractABI: WavaxBondContract,
+//     reserveContractAbi: WavaxTokenContract,
+//     networkAddrs: {
+//         [Networks.AVAX_MAIN]: {
+//             bondAddress: addressesAvax.BONDEPOSITORY_AVAX,
+//             reserveAddress: addressesAvax.WAVAX_ADDRESS,
+//         },
+//         [Networks.AVAX_TEST]: {
+//             bondAddress: addressesFuji.BONDEPOSITORY_AVAX,
+//             reserveAddress: addressesFuji.WAVAX_ADDRESS,
+//         },
+//     },
+//     reserveDecimal: 18,
+//     // tokensInStrategy: "756916000000000000000000",
+// });
 
-export default [bend, wavax];
+export default [bend];
