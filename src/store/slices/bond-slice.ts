@@ -236,6 +236,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         // } else if (bond.name === bend.name) {
         //     purchased = purchased * bendPrice;
         // }
+        purchased = purchased * bendPrice;
     }
     console.log(marketPrice);
 
