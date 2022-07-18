@@ -41,7 +41,7 @@ function NavContent() {
     return (
         <div className="dapp-sidebar">
             <div className="branding-header">
-                <Link href="https://levdev2017.github.io/">
+                <Link href="https://cunoro.finance/">
                     <img alt="" src={CunoroLogo} width="160px" height="160px" />
                 </Link>
 
