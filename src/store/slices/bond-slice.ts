@@ -244,7 +244,8 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         // }
         purchased = purchased * bendPrice;
     }
-    console.log(bondQuote);
+
+    bondPrice = marketPrice;
 
     return {
         bond: bond.name,
