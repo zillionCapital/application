@@ -226,7 +226,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
                     </div>
                 </Box>
             </Slide>
-            <Zapin open={zapinOpen} handleClose={handleZapinClose} bond={bond} />
+            {/* <Zapin open={zapinOpen} handleClose={handleZapinClose} bond={bond} />*/}
         </Box>
     );
 }
