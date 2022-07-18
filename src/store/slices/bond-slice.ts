@@ -254,7 +254,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         purchased,
         vestingTerm: Number(terms.vestingTerm),
         maxBondPrice,
-        bondPrice: bondPrice / Math.pow(10, reserveDecimal),
+        bondPrice: bondPrice,
         marketPrice,
         maxBondPriceToken,
     };
