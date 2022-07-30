@@ -7,19 +7,19 @@ import { ReactComponent as Discord } from "../../../assets/icons/discord.svg";
 export default function Social() {
     return (
         <div className="social-row">
-            <Link href="https://github.com/" style={{ pointerEvents: "none" }} target="_blank">
+            <Link href="https://github.com/cunoro" style={{ pointerEvents: "none" }} target="_blank">
                 <SvgIcon color="primary" component={GitHub} />
             </Link>
 
-            <Link href="https://twitter.com/" style={{ textDecoration: "none" }} target="_blank">
+            <Link href="https://twitter.com/cunorofinance" style={{ textDecoration: "none" }} target="_blank">
                 <SvgIcon color="primary" component={Twitter} />
             </Link>
 
-            <Link href="https://t.me/" style={{ pointerEvents: "none" }} target="_blank">
+            <Link href="https://t.me/+O7pOJ6H7KEJiNDIy" style={{ pointerEvents: "none" }} target="_blank">
                 <SvgIcon viewBox="0 0 32 32" color="primary" component={Telegram} />
             </Link>
 
-            <Link href="https://discord.gg/" style={{ pointerEvents: "none" }} target="_blank">
+            <Link href="https://discord.gg/7uP2SQ2t5F" style={{ pointerEvents: "none" }} target="_blank">
                 <SvgIcon color="primary" component={Discord} />
             </Link>
         </div>
