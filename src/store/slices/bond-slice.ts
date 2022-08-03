@@ -198,7 +198,6 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -9));
     } else {
         bondQuote = await bondContract.payoutFor(amountInWei);
-        console.log("payout-for", bondQuote);
 
         // bondQuote = bondQuote / Math.pow(10, 18);
         bondQuote = parseInt(value) * bendPrice;
@@ -254,7 +253,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         purchased,
         vestingTerm: Number(terms.vestingTerm),
         maxBondPrice,
-        bondPrice: bondPrice,
+        bondPrice: bondPrice * 0.8,
         marketPrice,
         maxBondPriceToken,
     };
@@ -345,7 +344,7 @@ export const calcBondWithDrawDetails = createAsyncThunk("bonding/calcBondDetails
         withdrawQuote,
         withdrawFee,
         maxWithdraw,
-        bondPrice: bondPrice / Math.pow(10, bond.reserveDecimal),
+        bondPrice: (bondPrice / Math.pow(10, bond.reserveDecimal)) * 0.8,
         marketPrice,
     };
 });
