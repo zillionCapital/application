@@ -29,6 +29,7 @@
     "node-sass": "^6.0.1",
     "node-watch": "^0.7.1",
     "notistack": "^1.0.10",
+    "paraswap": "^5.2.0",
     "react": "^16.14.0",
     "react-copy-to-clipboard": "^5.0.4",
     "react-dom": "^16.14.0",
