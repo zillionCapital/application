@@ -20,19 +20,6 @@ export async function getMarketPrice(networkID: Networks, provider: any): Promis
 
     const marketPrice = (reserves[1] * avaxPrice) / noro;
     return marketPrice;
-    // //
-    // const paraSwap = new ParaSwap(43114);
-    //
-    // const srcToken = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"; // AVAX
-    // const destToken = "0x8810dc193bA78b0dB831687EBB8d79f24a8b5E81"; // NORO
-    //
-    // const baseAmount = (1 / avaxPrice) * Math.pow(10, 18);
-    //
-    // const res: any = await paraSwap.getRate(srcToken, destToken, baseAmount.toString());
-    // console.log(res);
-    //
-    // return res.destUSD;
-
     //
     // const addresses = getAddresses(networkID);
     // const sabContract = new ethers.Contract(addresses.NORO_ADDRESS, SabTokenContract, provider);
