@@ -19,7 +19,7 @@ import { metamaskErrorWrap } from "../../helpers/metamask-error-wrap";
 import { sleep } from "../../helpers";
 import { BigNumber } from "ethers";
 import { IAllBondData } from "src/hooks/bonds";
-import { getMarketPrice } from "../../helpers/get-market-price";
+import { getMarketPrice, getAvaxReserves } from "../../helpers/get-market-price";
 import { LpReserveContract } from "../../abi";
 
 interface IChangeApproval {
@@ -147,6 +147,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     }
 
     const amountInWei = ethers.utils.parseEther(value);
+    // console.log("Bond value in wei (amountInWei) : ", amountInWei);
 
     let bondPrice = 0,
         bondDiscount = 0,
@@ -162,25 +163,31 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
 
     let marketPrice = await getMarketPrice(networkID, provider);
+    console.log(marketPrice);
 
-    const mimPrice = getTokenPrice("BEND");
+    // const mimPrice = getTokenPrice("MIM");
     // marketPrice = (marketPrice / Math.pow(10, 9)) * mimPrice;
+    const avaxPrice = getTokenPrice("AVAX");
+    const ethPrice = getTokenPrice("ETH");
+    const bendPrice = getTokenPrice("BEND");
+    let reserveDecimal = bond.reserveDecimal;
 
     try {
         bondPrice = await bondContract.bondPriceInUSD();
 
-        if (bond.name === wavax.name) {
-            const avaxPrice = getTokenPrice("AVAX");
-            bondPrice = bondPrice * avaxPrice;
-        }
+        // if (bond.name === avaxTime.name) {
+        //     const avaxPrice = getTokenPrice("AVAX");
+        //     bondPrice = bondPrice * avaxPrice;
+        // }
 
-        bondDiscount = (marketPrice * Math.pow(10, 18) - bondPrice) / bondPrice;
+        bondDiscount = (marketPrice * Math.pow(10, reserveDecimal) - bondPrice) / (marketPrice * Math.pow(10, reserveDecimal));
     } catch (e) {
         console.log("error getting bondPriceInUSD", e);
     }
 
     let maxBondPriceToken = 0;
     const maxBodValue = ethers.utils.parseEther("1");
+    let maxBondQuote = 0;
 
     if (bond.isLP) {
         valuation = await bondCalcContract.valuation(bond.getAddressForReserve(networkID), amountInWei);
@@ -188,18 +195,24 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         bondQuote = bondQuote / Math.pow(10, 9);
 
         const maxValuation = await bondCalcContract.valuation(bond.getAddressForReserve(networkID), maxBodValue);
-        const maxBondQuote = await bondContract.payoutFor(maxValuation);
+        maxBondQuote = await bondContract.payoutFor(maxValuation);
         maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -9));
     } else {
         bondQuote = await bondContract.payoutFor(amountInWei);
-        bondQuote = bondQuote / Math.pow(10, 18);
+        bondQuote = bondQuote / Math.pow(10, 16);
+        console.log(bondQuote);
 
-        const maxBondQuote = await bondContract.payoutFor(maxBodValue);
+        maxBondQuote = await bondContract.payoutFor(maxBodValue);
+        if (bond.name === wavax.name) {
+            maxBondQuote = maxBondQuote * avaxPrice;
+        }
         maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -18));
-    }
 
-    if (!!value && bondQuote > maxBondPrice) {
-        dispatch(error({ text: messages.try_mint_more(maxBondPrice.toFixed(2).toString()) }));
+        if (bond.name === wavax.name) {
+            bondQuote = bondQuote * avaxPrice;
+        } else if (bond.name === bend.name) {
+            bondQuote = bondQuote * 0.94 * 0.94 * bendPrice;
+        }
     }
 
     // Calculate bonds purchased
@@ -213,19 +226,23 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         purchased = await bondCalcContract.valuation(assetAddress, purchased);
         purchased = (markdown / Math.pow(10, 18)) * (purchased / Math.pow(10, 9));
 
-        if (bond.name === wavax.name) {
-            const avaxPrice = getTokenPrice("AVAX");
-            purchased = purchased * avaxPrice;
-        }
+        // if (bond.name === avaxTime.name) {
+        //     const avaxPrice = getTokenPrice("AVAX");
+        //     purchased = purchased * avaxPrice;
+        // }
     } else {
         if (bond.tokensInStrategy) {
             purchased = BigNumber.from(purchased).add(BigNumber.from(bond.tokensInStrategy)).toString();
         }
-        purchased = purchased / Math.pow(10, 18);
+        purchased = purchased / Math.pow(10, reserveDecimal);
 
         if (bond.name === wavax.name) {
-            const avaxPrice = getTokenPrice("AVAX");
-            purchased = purchased * avaxPrice;
+            const avaxReserves = await getAvaxReserves(networkID, provider);
+            console.log(avaxReserves);
+
+            purchased = avaxReserves * avaxPrice;
+        } else if (bond.name === bend.name) {
+            purchased = purchased * bendPrice;
         }
     }
 
@@ -236,7 +253,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         purchased,
         vestingTerm: Number(terms.vestingTerm),
         maxBondPrice,
-        bondPrice: bondPrice / Math.pow(10, 18),
+        bondPrice: bondPrice / Math.pow(10, reserveDecimal),
         marketPrice,
         maxBondPriceToken,
     };
