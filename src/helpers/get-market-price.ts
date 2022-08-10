@@ -8,10 +8,11 @@ import { getAddresses } from "../constants";
 import { getTokenPrice } from "./token-price";
 import allBonds from "./bond";
 
+const reserveAvaxNoroAddress = "0x6bee00C9c5800d233fF1c2403d4a16A9e9ae792B";
+
 export async function getMarketPrice(networkID: Networks, provider: any): Promise<number> {
     const avaxPrice = getTokenPrice("AVAX");
 
-    const reserveAvaxNoroAddress = "0x6bee00C9c5800d233fF1c2403d4a16A9e9ae792B";
     const pairContract = new ethers.Contract(reserveAvaxNoroAddress, LpReserveContract, provider);
     const reserves = await pairContract.getReserves();
 
@@ -37,4 +38,11 @@ export async function getMarketPrice(networkID: Networks, provider: any): Promis
     // const timeSupply = totalSupply - timeAmount;
     //
     // return rfvTreasury / timeSupply;
+}
+
+export async function getAvaxReserves(networkID: Networks, provider: any): Promise<any> {
+    const pairContract = new ethers.Contract(reserveAvaxNoroAddress, LpReserveContract, provider);
+    const reserves = await pairContract.getReserves();
+
+    return reserves[1] / Math.pow(10, 18);
 }
