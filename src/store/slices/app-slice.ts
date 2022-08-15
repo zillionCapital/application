@@ -4,7 +4,7 @@ import { StakingContract, SSabTokenContract, SabTokenContract } from "../../abi"
 import { setAll } from "../../helpers";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 import { JsonRpcProvider } from "@ethersproject/providers";
-import { getMarketPrice, getTokenPrice } from "../../helpers";
+import { getMarketPrice, getAvaxReserves, getTokenPrice } from "../../helpers";
 import { RootState } from "../store";
 import allBonds from "../../helpers/bond";
 
@@ -17,6 +17,7 @@ export const loadAppDetails = createAsyncThunk(
     "app/loadAppDetails",
     //@ts-ignore
     async ({ networkID, provider }: ILoadAppDetails) => {
+        const avaxPrice = getTokenPrice("AVAX");
         const bendPrice = getTokenPrice("BEND");
         const addresses = getAddresses(networkID);
 
@@ -27,7 +28,7 @@ export const loadAppDetails = createAsyncThunk(
         const sabContract = new ethers.Contract(addresses.NORO_ADDRESS, SabTokenContract, provider);
 
         const marketPrice = await getMarketPrice(networkID, provider); // ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * (bendPrice * 333333.333);
-        console.log(marketPrice);
+        // console.log(marketPrice);
 
         const totalSupply = (await sabContract.totalSupply()) / Math.pow(10, 9);
         const circSupply = (await ssabContract.circulatingSupply()) / Math.pow(10, 9);
@@ -38,6 +39,10 @@ export const loadAppDetails = createAsyncThunk(
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
         const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1, 0);
+
+        const avaxReserves = await getAvaxReserves(networkID, provider);
+        const avaxReserveValue = avaxReserves * avaxPrice;
+        treasuryBalance + avaxReserveValue;
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);

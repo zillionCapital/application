@@ -163,10 +163,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
 
     let marketPrice = await getMarketPrice(networkID, provider);
-    console.log(marketPrice);
 
-    // const mimPrice = getTokenPrice("MIM");
-    // marketPrice = (marketPrice / Math.pow(10, 9)) * mimPrice;
     const avaxPrice = getTokenPrice("AVAX");
     const ethPrice = getTokenPrice("ETH");
     const bendPrice = getTokenPrice("BEND");
@@ -174,11 +171,6 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
 
     try {
         bondPrice = await bondContract.bondPriceInUSD();
-
-        // if (bond.name === avaxTime.name) {
-        //     const avaxPrice = getTokenPrice("AVAX");
-        //     bondPrice = bondPrice * avaxPrice;
-        // }
 
         bondDiscount = (marketPrice * Math.pow(10, reserveDecimal) - bondPrice) / (marketPrice * Math.pow(10, reserveDecimal));
     } catch (e) {
@@ -199,8 +191,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -9));
     } else {
         bondQuote = await bondContract.payoutFor(amountInWei);
-        bondQuote = bondQuote / Math.pow(10, 16);
-        console.log(bondQuote);
+        bondQuote = bondQuote / Math.pow(10, 18);
 
         maxBondQuote = await bondContract.payoutFor(maxBodValue);
         if (bond.name === wavax.name) {
@@ -225,11 +216,6 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
 
         purchased = await bondCalcContract.valuation(assetAddress, purchased);
         purchased = (markdown / Math.pow(10, 18)) * (purchased / Math.pow(10, 9));
-
-        // if (bond.name === avaxTime.name) {
-        //     const avaxPrice = getTokenPrice("AVAX");
-        //     purchased = purchased * avaxPrice;
-        // }
     } else {
         if (bond.tokensInStrategy) {
             purchased = BigNumber.from(purchased).add(BigNumber.from(bond.tokensInStrategy)).toString();
