@@ -66,7 +66,7 @@ export const loadAppDetails = createAsyncThunk(
         const circ1 = await ssabContract.circulatingSupply();
         const stakingRebase = stakingReward / circ1;
         const fiveDayRate = Math.pow(1 + stakingRebase, 5 * 3) - 1;
-        const stakingAPY = Math.pow(1 + stakingRebase, 365 * 3) - 1;
+        const stakingAPY = 0;
 
         const currentIndex = await stakingContract.index();
         const nextRebase = epoch.endTime;
